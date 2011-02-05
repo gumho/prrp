@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @proposal.title %>
+</p>
+<p>
+    <b>Documents:</b>
+    <br>
+    <% @documents.each do |doc| %>
+        <%= doc.kind %>: <%= doc.doc_file_name %><br>
+    <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_proposal_path(@user, @proposal) %> |
+<%= link_to 'Back', user_proposals_path(@user) %>

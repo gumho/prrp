@@ -1,0 +1,33 @@
+<%= form_for([@user, @proposal], :html => { :multipart => true }) do |f| %>
+<% if @proposal.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(@proposal.errors.count, "error") %> prohibited this proposal from being saved:</h2>
+
+    <ul>
+        <% @proposal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+</div>
+
+<ul id="document-list">
+    <% f.fields_for :documents do |builder| %>
+        <%= render :partial => 'document_fields', :locals => { :f => builder} %>    
+    <% end %>
+    
+    
+</ul>
+
+<p><%= link_to_add_fields "Add Document", f, :documents %></p>
+
+
+<div class="actions">
+    <%= f.submit %>
+</div>
+<% end %>
