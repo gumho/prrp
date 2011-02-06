@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
@@ -41,7 +41,10 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-
+    
+    # since this is coming from registration, user is an applicant
+    @user.role = Role.where("name = ?", ["applicant"]).first
+    
     respond_to do |format|
       if @user.save
         format.html { redirect_to(:users, :notice => 'Registration successful!') }
