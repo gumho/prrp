@@ -12,8 +12,7 @@ Role.create(:id => 2, :name => "applicant")
 Role.create(:id => 3, :name => "campus admin")
 
 # Users
-User.create(:username => "admin", 
+User.create(:email => "admin@example.com",
   :password => "pppp", 
   :password_confirmation => "pppp", 
-  :email => "admin@example.com", 
   :role => admin)

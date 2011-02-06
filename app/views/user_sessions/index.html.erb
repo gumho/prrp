@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Username</th>
+    <th>Email</th>
     <th>Password</th>
     <th></th>
     <th></th>
@@ -11,7 +11,7 @@
 
 <% @user_sessions.each do |user_session| %>
   <tr>
-    <td><%= user_session.username %></td>
+    <td><%= user_session.email %></td>
     <td><%= user_session.password %></td>
     <td><%= link_to 'Show', user_session %></td>
     <td><%= link_to 'Edit', edit_user_session_path(user_session) %></td>
