@@ -16,7 +16,7 @@ class UserSessionsController < ApplicationController
 
     respond_to do |format|
       if @user_session.save
-        format.html { redirect_to(current_user, :notice => 'Logged in!') }
+        format.html { redirect_to(current_user, :notice => 'Successfully logged in!') }
       else
         format.html { render :action => "new" }
       end
@@ -30,7 +30,7 @@ class UserSessionsController < ApplicationController
     @user_session.destroy
 
     respond_to do |format|
-      format.html { redirect_to(:users) }
+      format.html { redirect_to(:root, :notice => "Successfully logged out!") }
     end
   end
 end
