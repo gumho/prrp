@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   
-  # before_filter :require_user
+  # before_filter :require_no_user
   
   # GET /users/1/proposals
   # GET /users/1/proposals.xml
