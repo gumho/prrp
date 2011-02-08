@@ -1,5 +1,6 @@
 Prrp::Application.routes.draw do
-  root :to => "home#index"
+
+  root :to => 'home#index'
   
   resources :users do
     resources :proposals
@@ -7,6 +8,8 @@ Prrp::Application.routes.draw do
 
   resources :password_resets
   resources :user_sessions
+  
+  match '/activate/:activation_code' => 'activations#create', :as => :activate
   
   match 'signup' => 'users#new', :as => :signup
   match 'login' => 'user_sessions#new', :as => :login

@@ -9,4 +9,17 @@ class User < ActiveRecord::Base
     UserMailer.password_reset_instructions(self).deliver
   end
   
+  def deliver_activation_instructions!
+    reset_perishable_token!
+    UserMailer.confirm_account_instructions(self).deliver
+  end
+  
+  def deliver_welcome!
+    UserMailer.welcome_message(self).deliver
+  end
+  
+  def activate!
+    self.active = true
+    save
+  end
 end

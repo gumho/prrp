@@ -42,17 +42,17 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     
-    # since this is coming from registration, user is an applicant
-    @user.role = Role.where("name = ?", ["applicant"]).first
+    # @user.role = Role.where("name = ?", ["applicant"]).first
     
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(:users, :notice => 'Registration successful!') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
+    # Saving without session maintenance to skip
+    # auto-login which can't happen here because
+    # the User has not yet been activated
+    if @user.save_without_session_maintenance
+      @user.deliver_activation_instructions!
+      flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
+      redirect_to root_url
+    else
+      render :action => :new
     end
   end
 
