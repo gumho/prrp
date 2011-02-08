@@ -3,6 +3,7 @@ class ActivationsController < ApplicationController
   before_filter :load_user_using_perishable_token
   
   def create
+    # TODO: change this to redirect to a page
     raise Exception if @user.active?
 
     if @user.activate!
