@@ -1,6 +1,8 @@
 class ActivationsController < ApplicationController
+  
+  before_filter :load_user_using_perishable_token
+  
   def create
-    @user = User.find_using_perishable_token(params[:activation_code], 1.week) || (raise Exception)
     raise Exception if @user.active?
 
     if @user.activate!
@@ -12,5 +14,17 @@ class ActivationsController < ApplicationController
       render :action => :new
     end
   end
+  
+  private
+    def load_user_using_perishable_token
+      @user = User.find_using_perishable_token(params[:activation_code])
+      unless @user
+        flash[:notice] = "We're sorry, but we could not locate your account. " +
+          "If you are having issues try copying and pasting the URL " +
+          "from your email into your browser or restarting the " +
+          "reset password process."
+        redirect_to root_url
+      end
+    end
 
 end
