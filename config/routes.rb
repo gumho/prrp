@@ -5,10 +5,13 @@ Prrp::Application.routes.draw do
     resources :proposals
   end
 
+  resources :password_resets
   resources :user_sessions
   
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
+  match 'forgot_password' => 'password_resets#new', :as =>:forgot_password
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
