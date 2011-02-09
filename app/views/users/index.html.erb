@@ -2,7 +2,6 @@
 <table>
   <tr>
     <th>Email</th>
-    <th>Role</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,7 +10,6 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.email %></td>
-    <td><%= user.role.name %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
