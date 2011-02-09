@@ -2,9 +2,16 @@ Prrp::Application.routes.draw do
 
   root :to => 'home#index'
   
+  
   resources :users do
     resources :proposals
+    
+    collection do
+      get :resend_activation
+    end
   end
+
+
 
   resources :password_resets, :only => [:new, :create, :edit, :update]
   resources :user_sessions
