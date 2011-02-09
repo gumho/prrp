@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   
-  # before_filter :require_no_user
+  before_filter :require_owner
   
   # GET /users/1/proposals
   # GET /users/1/proposals.xml
@@ -92,6 +92,15 @@ class ProposalsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(user_proposals_path) }
       format.xml  { head :ok }
+    end
+  end
+  
+  private
+  
+  def require_owner
+    if params[:user_id] != current_user.id.to_s
+      flash[:notice] = "You do not have access to this page"
+      redirect_to user_proposals_path(current_user)
     end
   end
 end
