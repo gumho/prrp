@@ -10,7 +10,11 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <div class="field">
+    <%= f.label :organization_id %><br />
+    <%= f.select(:organization_id, Organization.all.collect {|p| [ p.name, p.id ] }) %>
+  </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
