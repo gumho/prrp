@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110208051704) do
+ActiveRecord::Schema.define(:version => 20110214014320) do
 
   create_table "documents", :force => true do |t|
     t.string   "kind"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20110208051704) do
     t.integer  "role_id"
     t.string   "perishable_token",  :default => "",    :null => false
     t.boolean  "active",            :default => false, :null => false
+    t.integer  "organization_id"
   end
 
 end

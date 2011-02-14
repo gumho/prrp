@@ -1,0 +1,9 @@
+<h1><%= @organization.name %> Admin Control Panel</h1>
+
+<h2>Set deadline</h2>
+<%= form_tag('/ca/update', :method => 'put') do %>
+    <%= organization_combo_box %><br>
+    <%= label_tag :deadline, "Deadline" %><br>
+    <%= select_date @organization.deadline, :prefix => 'deadline' %><br>
+    <%= submit_tag("Set") %>
+<% end %>

@@ -1,8 +1,7 @@
 Prrp::Application.routes.draw do
 
   root :to => 'home#index'
-  
-  
+    
   resources :users do
     resources :proposals
     
@@ -10,8 +9,6 @@ Prrp::Application.routes.draw do
       get :resend_activation
     end
   end
-
-
 
   resources :password_resets, :only => [:new, :create, :edit, :update]
   resources :user_sessions
@@ -23,6 +20,10 @@ Prrp::Application.routes.draw do
   match 'logout' => 'user_sessions#destroy', :as => :logout
   match 'forgot_password' => 'password_resets#new', :as =>:forgot_password
 
+  # privileged routes
+  match '/ca' => 'campus_admin_controls#edit'
+  match '/ca/update' => 'campus_admin_controls#update', :via => [:put]
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

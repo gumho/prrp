@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :proposals
   belongs_to :role
+  belongs_to :organization
   
   def deliver_password_reset_instructions!
     reset_perishable_token!
