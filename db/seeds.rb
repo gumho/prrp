@@ -6,11 +6,14 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
+# Terms
+Term.create(:year => 2009)
+Term.create(:year => 2010)
+
 # Roles
 admin = Role.create(:id => 1, :name => "admin")
 applicant = Role.create(:id => 2, :name => "applicant")
 campus_admin = Role.create(:id => 3, :name => "campus admin")
-
 
 # Organizations
 uci = Organization.create(:id => 1, :name => "UC Irvine", :deadline => Date.today + 5)
