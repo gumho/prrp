@@ -1,0 +1,2 @@
+class PrrpAdminControlController < ApplicationController
+end
