@@ -4,6 +4,7 @@ gem 'rails', '3.0.3'
 gem 'authlogic'
 gem 'paperclip'
 gem 'jquery-rails'
+gem 'cancan'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

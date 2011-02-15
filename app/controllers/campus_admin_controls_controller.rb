@@ -1,5 +1,7 @@
 class CampusAdminControlsController < ApplicationController
-
+  
+  before_filter :auth
+  
   def edit
     @organization = current_user.organization
   end
@@ -17,6 +19,10 @@ class CampusAdminControlsController < ApplicationController
       render :action => "edit"
     end
     
+  end
+  
+  def auth
+    authorize! :administer, :campus_controls
   end
   
 end
