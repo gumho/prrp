@@ -8,12 +8,31 @@
 
 # Roles
 admin = Role.create(:id => 1, :name => "admin")
-Role.create(:id => 2, :name => "applicant")
-Role.create(:id => 3, :name => "campus admin")
+applicant = Role.create(:id => 2, :name => "applicant")
+campus_admin = Role.create(:id => 3, :name => "campus admin")
+
+
+# Organizations
+uci = Organization.create(:id => 1, :name => "UC Irvine", :deadline => Date.today + 5)
+ucd = Organization.create(:id => 2, :name => "UC Davis", :deadline => Date.today + 4)
 
 # Users
 User.create(:email => "a@a.com",
   :password => "pppp", 
   :password_confirmation => "pppp", 
   :role => admin,
+  :active => true)
+
+User.create(:email => "admin@uci.edu",
+  :password => "pppp", 
+  :password_confirmation => "pppp", 
+  :role => campus_admin,
+  :organization => uci,
+  :active => true)
+
+User.create(:email => "stu@ucd.edu",
+  :password => "pppp", 
+  :password_confirmation => "pppp", 
+  :role => applicant,
+  :organization => ucd,
   :active => true)
