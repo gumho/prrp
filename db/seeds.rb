@@ -7,8 +7,11 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 # Terms
+current_term = Term.create(:year => 2010)
 Term.create(:year => 2009)
-Term.create(:year => 2010)
+
+# Current Term
+CurrentTerm.create(:term => current_term)
 
 # Roles
 admin = Role.create(:id => 1, :name => "admin")
