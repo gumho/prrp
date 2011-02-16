@@ -11,7 +11,7 @@ Prrp::Application.routes.draw do
   end
 
   resources :password_resets, :only => [:new, :create, :edit, :update]
-  resources :user_sessions
+  resources :user_sessions, :except => [:edit]
   
   match '/activate/:activation_code' => 'activations#create', :as => :activate
   
