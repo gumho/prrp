@@ -1,7 +1,8 @@
 Prrp::Application.routes.draw do
 
   root :to => 'home#index'
-    
+  match 'ad' => 'home#applicant_dashboard'
+  
   resources :users do
     resources :proposals
     
