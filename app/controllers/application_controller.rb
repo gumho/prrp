@@ -42,6 +42,8 @@ class ApplicationController < ActionController::Base
     end
     
     def current_term
-      return CurrentTerm.find(1)
+      @current_term = CurrentTerm.find(1)
+    rescue ActiveRecord::RecordNotFound
+      return @current_term
     end
 end
