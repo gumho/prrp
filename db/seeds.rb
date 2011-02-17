@@ -36,9 +36,17 @@ User.create(:email => "admin@uci.edu",
   :organization => uci,
   :active => true)
 
-User.create(:email => "stu@ucd.edu",
+student_applicant = User.create(:email => "kid@uci.edu",
   :password => "pppp", 
   :password_confirmation => "pppp", 
   :role => applicant,
   :organization => ucd,
   :active => true)
+  
+# Proposals
+for i in 0..50
+  Proposal.create(:title => "some fake proposal",
+    :user => student_applicant,
+    :term => current_term)
+end
+  
