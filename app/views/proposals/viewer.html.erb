@@ -1,0 +1,17 @@
+<h1>Proposals</h1>
+
+<%= page_entries_info @proposals %>
+<%= will_paginate @proposals%>
+
+<table border="0" cellspacing="5" cellpadding="5">
+    <tr>
+        <th>Author</th>
+        <th>Title</th>
+    </tr>
+    <% @proposals.each do |proposal| %>
+    <tr>
+        <td><%= proposal.title %></td>
+        <td><%= proposal.title %></td>
+    </tr>
+    <% end %>
+</table>
