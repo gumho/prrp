@@ -5,11 +5,13 @@ Prrp::Application.routes.draw do
   
   resources :users do
     resources :proposals
-    
+  
     collection do
       get :resend_activation
     end
   end
+  
+  match 'proposals/:page' => 'proposals#viewer'
 
   resources :password_resets, :only => [:new, :create, :edit, :update]
   resources :user_sessions, :except => [:edit]
