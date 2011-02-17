@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110216051836) do
+ActiveRecord::Schema.define(:version => 20110217192548) do
 
   create_table "current_terms", :force => true do |t|
     t.integer  "term_id"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(:version => 20110216051836) do
     t.string   "perishable_token",  :default => "",    :null => false
     t.boolean  "active",            :default => false, :null => false
     t.integer  "organization_id"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
 end
