@@ -7,6 +7,10 @@ gem 'jquery-rails'
 gem 'cancan'
 gem 'will_paginate', '~> 3.0.pre2'
 
+group :development, :test do
+    gem 'railroady'
+end
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

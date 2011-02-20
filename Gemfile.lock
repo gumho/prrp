@@ -54,6 +54,7 @@ GEM
       rack (>= 1.0.0)
     rack-test (0.5.7)
       rack (>= 1.0)
+    railroady (1.0.1)
     rails (3.0.3)
       actionmailer (= 3.0.3)
       actionpack (= 3.0.3)
@@ -85,6 +86,7 @@ DEPENDENCIES
   cancan
   jquery-rails
   paperclip
+  railroady
   rails (= 3.0.3)
   sqlite3-ruby
   will_paginate (~> 3.0.pre2)
