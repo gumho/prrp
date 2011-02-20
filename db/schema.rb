@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110217192548) do
+ActiveRecord::Schema.define(:version => 20110220231248) do
 
   create_table "current_terms", :force => true do |t|
     t.integer  "term_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20110217192548) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "term_id"
+    t.boolean  "reviewed",   :default => false
   end
 
   create_table "roles", :force => true do |t|
