@@ -1,9 +1,9 @@
-<h1>Listing proposals</h1>
+<h1>My Proposals</h1>
 
 <table>
   <tr>
     <th>Title</th>
-    <th>User</th>
+    <th>Year Created</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,6 +12,7 @@
 <% @proposals.each do |proposal| %>
   <tr>
     <td><%= proposal.title %></td>
+    <td><%= proposal.term_id%></td>
     <td><%= link_to 'Show', user_proposal_path(@user, proposal) %></td>
     <td><%= link_to 'Edit', edit_user_proposal_path(@user, proposal) %></td>
     <td><%= link_to 'Destroy', [@user, proposal], :confirm => 'Are you sure?', :method => :delete %></td>
