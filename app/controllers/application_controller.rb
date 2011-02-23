@@ -41,9 +41,20 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
     
+    # Gets the current term
     def current_term
       @current_term = CurrentTerm.find(1)
     rescue ActiveRecord::RecordNotFound
       return @current_term
+    end
+    
+    # Path for user type's home
+    def role_home_path
+      cu = current_user
+      if cu.role.name == 'applicant'
+        ad_path
+      elsif cu.role.name == 'campus admin'
+        review_proposals_path
+      end
     end
 end
