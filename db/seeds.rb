@@ -37,6 +37,8 @@ User.create(:email => "admin@uci.edu",
   :active => true)
 
 student_applicant = User.create(:email => "kid@uci.edu",
+  :first_name => "Congo",
+  :last_name => "Jim",
   :password => "pppp", 
   :password_confirmation => "pppp", 
   :role => applicant,
