@@ -1,6 +1,7 @@
 class ProposalsController < ApplicationController
   
-  before_filter :require_owner, :except => [:review]
+  before_filter :require_owner, :except => [:show, :review]
+  before_filter :require_owner_or_review, :only => [:show]
   
   # GET /users/1/proposals
   # GET /users/1/proposals.xml
@@ -42,7 +43,7 @@ class ProposalsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @proposal = @user.proposals.create(params[:proposal])
-
+    
     if @proposal.save
       redirect_to(user_proposal_path(@user, @proposal), :notice => 'Proposal was successfully created.')
     else
@@ -74,6 +75,7 @@ class ProposalsController < ApplicationController
   end
   
   def review
+    authorize! :review, :proposals
     @proposals = Proposal.search(params)
   end
   
@@ -83,6 +85,14 @@ class ProposalsController < ApplicationController
     if params[:user_id] != current_user.id.to_s
       flash[:notice] = "You do not have access to this page"
       redirect_to user_proposals_path(current_user)
+    end
+  end
+  
+  def require_owner_or_review
+    if (params[:user_id] == current_user.id.to_s) || (can? :review, :proposals)
+    else
+      flash[:notice] = "You do not have access to this page"
+      redirect_to user_proposals_path(current_user)  
     end
   end
   
