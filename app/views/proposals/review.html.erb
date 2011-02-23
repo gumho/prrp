@@ -22,7 +22,7 @@
     </tr>
     <% @proposals.each do |proposal| %>
     <tr>
-        <td><%= proposal.title %></td>
+        <td><%= link_to proposal.title, user_proposal_path(proposal.user, proposal) %></td>
         <td><%= proposal.user.first_name %> <%= proposal.user.last_name %></td>
         <td><%= proposal.user.organization.name %></td>
         <td><%= proposal.reviewed %></td>
