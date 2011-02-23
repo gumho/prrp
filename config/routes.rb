@@ -1,5 +1,7 @@
 Prrp::Application.routes.draw do
 
+  resources :comments
+
   root :to => 'home#index'
   match 'ad' => 'home#applicant_dashboard'
   
