@@ -1,13 +1,14 @@
-<h1>Pacific Rim Research Program</h1>
-
+<img src="/images/logohead.png" class = "center">
+<div id= "maintext">
 <p>
-    Are you submitting a proposal?
+    
     <% if current_user %>
-        <%= link_to "Create new proposal", user_proposals_path(current_user) %>
+        Click here to <%= link_to "Create new proposal", user_proposals_path(current_user) %>
     <% else %>
-        <%= link_to "Log in", :login%>
+        Please <%= link_to "Log in", :login%> to continue
     <% end %>
 </p>
 <p>
-    Are you a campus or PRRP committee reviewer? 
+    Looking to submit a letter of reccomendation? <a href="/null">Click here</a> (NYI)
 </p>
+</div>
