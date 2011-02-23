@@ -1,11 +1,20 @@
-body { background-color: #fff; color: #333; }
+body { margin: 0; padding: 0;}
 
 body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   16px;
+  font-family: Verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
   line-height: 18px;
 }
 
+/*----- reset -----*/
+p, a, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6 { margin: 10px 0 10px 0;}
+
+/*----- rails -----*/
 pre {
   background-color: #eee;
   padding: 10px;
@@ -19,23 +28,7 @@ a:hover { color: #fff; background-color:#000; }
 div.field, div.actions {
   margin-bottom: 10px;
 }
-img.center{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-#maintext{
-  
-  padding: 30px;
-  text-align: center;
-}
-#title{
-  margin-top: 0px;
-  text-align: center;
-}
-#nav{
-  text-align: right;
-}
+
 #notice {
   color: green;
 }
@@ -52,6 +45,7 @@ img.center{
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
+  margin-top: 20px;
   background-color: #f0f0f0;
 }
 
@@ -69,4 +63,46 @@ img.center{
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+/*----- layout.application -----*/
+#wrapper {
+	background-color: #F8F2DA;
+	width: 900px;
+	margin: 0 auto;
+}
+#header {
+	position: relative;
+	background-color: #A3D0A7;
+}
+	#header a {
+		text-decoration: none;
+		color: #111;
+	}
+	#header h1{
+		margin: 0;
+		padding: 5px;
+		font-family: Georgia;
+		font-size: 20px;
+		letter-spacing: -2px;
+	}
+	#nav-links {
+		position: absolute;
+		padding: 5px;
+		top: 0;
+		right: 0;
+	}
+	
+#notice {
+}
+	#notice p {
+		width: 50%;
+		margin: 10px auto 0 auto;
+		border: 1px solid #D2E29B;
+		background-color: #EBF3CF;
+		color: #758D57;
+		text-align: center;
+	}
+#content {
+	padding: 0 10px 10px 10px;
 }

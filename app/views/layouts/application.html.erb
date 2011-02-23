@@ -12,24 +12,31 @@
 
 </head>
 <body>
-    <div id="nav">
-        <%= link_to "Home", :controller => 'home', :action => 'index'%>
-        <% if current_user %>
-        <%= link_to "Edit Profile", edit_user_path(current_user.id)%>
-        <%= link_to "Logout", :logout%>
-        <% else %>
-        <%= link_to "Register", new_user_path%> | 
-        <%= link_to "Login", :login %>
-        <%= link_to "Forgot password", new_password_reset_path %>
-        <% end %>
-    </div>
-	
-    
-    <div id="notice">
-        <%= notice %>
-    </div>
-    
-    <%= yield %>
+    <div id="wrapper">
+        <div id="header">
+            <h1><a href="/">Pacific Rim Research Program</a></h1>
+            <div id="nav-links">
+                <% if current_user %>
+                <%= link_to "Edit Profile", edit_user_path(current_user.id)%> |
+                <%= link_to "Logout", :logout%>
+                <% else %>
+                <%= link_to "Register", new_user_path%> | 
+                <%= link_to "Login", :login %>
+                <% end %>
+            </div>
+        </div>
 
+        <div id="notice">
+            <%= flash_helper %>
+        </div>
+
+        <div id="content">
+            <%= yield %>
+        </div>
+        
+        <div id="footer">
+
+        </div>
+    </div>
 </body>
 </html>
