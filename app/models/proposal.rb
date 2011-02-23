@@ -14,11 +14,11 @@ class Proposal < ActiveRecord::Base
   
   def self.sort_conditions(sort_by, order)
     if sort_by == 'author'
-      
+      "users.first_name #{order}"
     elsif sort_by == 'organization'
       "organizations.name #{order}"
-    elsif sort_by == 'author'
-      "users.first_name #{order}"
+    elsif sort_by == 'reviewed'
+      "proposals.reviewed"
     else
       "#{sort_by} #{order}"
     end
