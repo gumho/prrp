@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
     def current_term
       @current_term = CurrentTerm.find(1)
     rescue ActiveRecord::RecordNotFound
-      return @current_term
+      return @current_term.term
     end
     
     # Path for user type's home
