@@ -7,8 +7,7 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 # Terms
-current_term = Term.create(:year => 2010)
-Term.create(:year => 2009)
+current_term = Term.create(:begin => Date.today, :end => Date.today + 1)
 
 # Current Term
 CurrentTerm.create(:term => current_term)
@@ -36,7 +35,7 @@ User.create(:email => "admin@uci.edu",
   :organization => uci,
   :active => true)
 
-student_applicant = User.create(:email => "kid@uci.edu",
+student_applicant = User.create(:email => "s@ucd.edu",
   :first_name => "Congo",
   :last_name => "Jim",
   :password => "pppp", 

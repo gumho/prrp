@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110220231248) do
+ActiveRecord::Schema.define(:version => 20110223050317) do
 
   create_table "current_terms", :force => true do |t|
     t.integer  "term_id"
@@ -49,10 +49,11 @@ ActiveRecord::Schema.define(:version => 20110220231248) do
   end
 
   create_table "terms", :force => true do |t|
-    t.integer  "year"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active"
+    t.date     "begin"
+    t.date     "end"
   end
 
   create_table "users", :force => true do |t|
