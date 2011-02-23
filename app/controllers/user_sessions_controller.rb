@@ -16,7 +16,7 @@ class UserSessionsController < ApplicationController
 
     respond_to do |format|
       if @user_session.save
-        format.html { redirect_to(root_path, :notice => 'Successfully logged in!') }
+        format.html { redirect_to(role_home_path, :notice => 'Successfully logged in!') }
       elsif @user_session.attempted_record && !@user_session.attempted_record.active?
         flash[:notice] = render_to_string(:partial => 'user_sessions/not_active.erb', :locals => { :user => @user_session.attempted_record })
         format.html { render :action => "new"}
