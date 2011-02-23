@@ -9,6 +9,7 @@ class Ability
       can :apply, :proposal
     elsif user.role.name == "campus admin"
       can :administer, :campus_controls
+      can :review, :proposals
     end
   end
 end
