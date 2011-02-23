@@ -11,7 +11,7 @@ Prrp::Application.routes.draw do
     end
   end
   
-  match 'proposals/:page' => 'proposals#viewer'
+  match 'proposals/review' => 'proposals#review', :as => :review_proposals
 
   resources :password_resets, :only => [:new, :create, :edit, :update]
   resources :user_sessions, :except => [:edit]

@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   
-  before_filter :require_owner, :except => [:viewer]
+  before_filter :require_owner, :except => [:review]
   
   # GET /users/1/proposals
   # GET /users/1/proposals.xml
@@ -73,8 +73,8 @@ class ProposalsController < ApplicationController
     redirect_to(user_proposals_path)
   end
   
-  def viewer
-    @proposals = Proposal.paginate :page => params[:page], :per_page => 5
+  def review
+    @proposals = Proposal.search(params)
   end
   
   private
@@ -85,4 +85,6 @@ class ProposalsController < ApplicationController
       redirect_to user_proposals_path(current_user)
     end
   end
+  
+  
 end

@@ -1,0 +1,31 @@
+<h1>Proposals</h1>
+
+<div>    
+    <%= form_tag review_proposals_path, :method => 'get', :id => 'review_form' do %>
+    <%= text_field_tag :sort_by, params[:sort_by] %><br>
+    <%= text_field_tag :order, params[:order] %><br>
+    <%= check_box_tag :only_unreviewed, 1, (params[:only_unreviewed] ? true : false) %>
+    <%= label_tag :only_unreviewed, "Show only unreviewed" %>
+    <%= submit_tag "Filter", :id => 'review_filter_submit'%>
+    <% end%>
+</div>
+
+<%= page_entries_info @proposals %>
+<%= will_paginate @proposals %>
+
+<table border="0" cellspacing="5" cellpadding="5">
+    <tr>
+        <th><%= sort_link('title') %></th>
+        <th><%= sort_link('author')%></th>
+        <th><%= sort_link('organization')%></th>
+        <th><%= sort_link('reviewed')%></th></th>
+    </tr>
+    <% @proposals.each do |proposal| %>
+    <tr>
+        <td><%= proposal.title %></td>
+        <td><%= proposal.user.first_name %> <%= proposal.user.last_name %></td>
+        <td><%= proposal.user.organization.name %></td>
+        <td><%= proposal.reviewed %></td>
+    </tr>
+    <% end %>
+</table>
