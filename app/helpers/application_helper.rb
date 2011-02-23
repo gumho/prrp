@@ -16,4 +16,16 @@ module ApplicationHelper
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
+  
+  def flash_helper
+      f_names = [:notice, :warning, :message]
+
+      for name in f_names
+        if flash[name]
+          fl = "<p>#{flash[name]}</p>".html_safe
+        end
+      flash[name] = nil;
+    end
+    return fl
+  end
 end
