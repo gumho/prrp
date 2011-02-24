@@ -5,6 +5,6 @@ module ProposalsHelper
     else
       order = 'desc'
     end
-    link_to column.capitalize, :sort_by => column, :order => order
+    link_to column.capitalize, request.parameters.merge({:sort_by => column, :order => order})
   end
 end
