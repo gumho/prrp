@@ -19,7 +19,7 @@ class Proposal < ActiveRecord::Base
     elsif sort_by == 'organization'
       "organizations.name #{order}"
     elsif sort_by == 'reviewed'
-      "proposals.reviewed"
+      "proposals.reviewed #{order}"
     else
       "#{sort_by} #{order}"
     end
