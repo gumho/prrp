@@ -9,7 +9,8 @@ class Proposal < ActiveRecord::Base
     Proposal.paginate :page => params[:page], 
       :joins => [:user => :organization],
       :per_page => 5,
-      :order => sort_conditions(params[:sort_by], params[:order])
+      :order => sort_conditions(params[:sort_by], params[:order]),
+      :conditions => filter_conditions(params)
   end
   
   def self.sort_conditions(sort_by, order)
@@ -22,6 +23,11 @@ class Proposal < ActiveRecord::Base
     else
       "#{sort_by} #{order}"
     end
+  end
+  
+  def self.filter_conditions(params)
+    # add more conditions later
+    query = ['proposals.reviewed == ?', true] unless params[:only_unreviewed].blank?
   end
   
 end
