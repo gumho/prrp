@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   acts_as_authentic
   
+  has_many :comments
   has_many :proposals
   belongs_to :role
   belongs_to :organization

@@ -1,6 +1,6 @@
 Prrp::Application.routes.draw do
 
-  resources :comments
+  get "comments/create"
 
   root :to => 'home#index'
   match 'ad' => 'home#applicant_dashboard'
@@ -12,6 +12,8 @@ Prrp::Application.routes.draw do
       get :resend_activation
     end
   end
+  
+  resources :comments
   
   match 'proposals/review' => 'proposals#review', :as => :review_proposals
 

@@ -16,6 +16,7 @@ class ProposalsController < ApplicationController
     @user = User.find(params[:user_id])
     @proposal = @user.proposals.find(params[:id])
     @documents = @proposal.documents.all
+    @comment = @proposal.comments.build
   end
 
   # GET /users/1/proposals/new

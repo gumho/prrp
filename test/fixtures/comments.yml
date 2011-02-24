@@ -2,8 +2,10 @@
 
 one:
   user: 
+  proposal: 
   content: MyText
 
 two:
   user: 
+  proposal: 
   content: MyText

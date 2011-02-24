@@ -16,3 +16,22 @@
 
 <%= link_to 'Edit', edit_user_proposal_path(@user, @proposal) %> |
 <%= link_to 'Back', user_proposals_path(@user) %>
+
+<% if can? :review, :proposals %>
+<p>Add a comment:</p>
+<%= form_for @comment do |f| %>
+    <%= f.hidden_field  :user_id, :value => @proposal.user.id %>
+    <%= f.hidden_field :proposal_id %>
+    <%= f.text_area :content %> <br>
+    <%= f.submit %>
+<% end %>
+<% end %>
+
+<p>
+<strong>Comments (<%= @proposal.comments.length%>)</strong>
+<ul>
+<% @proposal.comments.each do |c| %>
+    <li><%= c.content%></li>
+<% end %>
+</ul>
+</p>
