@@ -23,8 +23,8 @@
 
 <p>Add a comment:</p>
 <%= form_for @comment do |f| %>
-    <%= f.text_field :proposal_id %>
-    <%= f.text_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :proposal_id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.text_area :content %> <br>
     <%= f.submit %>
 <% end %>
@@ -36,8 +36,9 @@
 <% @proposal.comments.each do |c| %>
     <li>
     <p><%= c.content%></p>
-    <%= current_user.id%>
-    <%= c.user.id%>
+    <% if c.user.id == current_user.id %>
+    edit
+    <% end %>
     </li>
 <% end %>
 </ul>
