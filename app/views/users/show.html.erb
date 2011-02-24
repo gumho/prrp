@@ -1,6 +1,12 @@
 <p>
   <b>Email:</b>
   <%= @user.email %>
+  <br>
+  <b>Organization:</b>
+  <%= @user.organization.name %>
+  <br>
+  <b>Role:</b>
+  <%= @user.role.name.capitalize%>
 </p>
 
 <p>
@@ -10,6 +16,4 @@
         <br>
     <% end %>
 </p>
-<%= link_to 'Create New Proposal', user_proposals_path(@user.id)%> |
 <%= link_to 'Edit My Profile', edit_user_path(@user) %> |
-<%= link_to 'Logout', :logout %>
