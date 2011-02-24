@@ -13,15 +13,18 @@
     <% end %>
 </p>
 
-
+<% if can? :apply, :proposal %>
 <%= link_to 'Edit', edit_user_proposal_path(@user, @proposal) %> |
 <%= link_to 'Back', user_proposals_path(@user) %>
+<% end%>
 
 <% if can? :review, :proposals %>
+<%= link_to 'Back', review_proposals_path %>
+
 <p>Add a comment:</p>
 <%= form_for @comment do |f| %>
-    <%= f.hidden_field  :user_id, :value => @proposal.user.id %>
-    <%= f.hidden_field :proposal_id %>
+    <%= f.text_field :proposal_id %>
+    <%= f.text_field :user_id, :value => current_user.id %>
     <%= f.text_area :content %> <br>
     <%= f.submit %>
 <% end %>
@@ -31,7 +34,11 @@
 <strong>Comments (<%= @proposal.comments.length%>)</strong>
 <ul>
 <% @proposal.comments.each do |c| %>
-    <li><%= c.content%></li>
+    <li>
+    <p><%= c.content%></p>
+    <%= current_user.id%>
+    <%= c.user.id%>
+    </li>
 <% end %>
 </ul>
 </p>
