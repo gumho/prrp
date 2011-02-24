@@ -17,7 +17,7 @@
             <h1><a href="/">Pacific Rim Research Program</a></h1>
             <div id="nav-links">
                 <% if current_user %>
-                <%= link_to "Edit Profile", edit_user_path(current_user.id)%> |
+                <%= link_to current_user.email, edit_user_path(current_user.id)%> |
                 <%= link_to "Logout", :logout%>
                 <% else %>
                 <%= link_to "Register", new_user_path%> | 
