@@ -35,10 +35,7 @@
 <ul>
 <% @proposal.comments.each do |c| %>
     <li>
-    <p><%= c.content%></p>
-    <% if c.user.id == current_user.id %>
-    edit
-    <% end %>
+        <p><%= c.content%></p>
     </li>
 <% end %>
 </ul>
