@@ -19,7 +19,12 @@
 <% end%>
 
 <% if can? :review, :proposals %>
-    <strong><%= link_to "ELECT"%></strong>
+    un-elect
+    <%= form_tag elect_user_proposal_path(@user, @proposal), :method => 'put' do %>
+      <%= hidden_field_tag :organization_id, @user.organization.id %>
+      <%= submit_tag 'Elect Proposal' %>
+    <% end %>
+
     <%= link_to 'Back', review_proposals_path %>
 
     <p>Add a comment:</p>

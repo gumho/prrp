@@ -81,7 +81,10 @@ class ProposalsController < ApplicationController
   
   def elect
     authorize! :review, :proposals
-    render
+    @proposal = Proposal.find(params[:id])
+    @campus_winner = @proposal.elect(current_term.id, @proposal.id, params[:organization_id])
+    (flash[:error] = @campus_winner.errors[:base]) if @campus_winner.errors.count > 0
+    redirect_to user_proposal_path(@proposal.user, @proposal)
   end
   
   private

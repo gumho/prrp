@@ -5,6 +5,11 @@ class Proposal < ActiveRecord::Base
   has_many :comments
   accepts_nested_attributes_for :documents, :allow_destroy => true 
   
+  def elect(term_id, proposal_id, organization_id)
+    @campus_winner = CampusWinner.find_or_create_by_proposal_id_and_term_id(:proposal_id => proposal_id,
+      :term_id => term_id, :organization_id => organization_id)
+  end
+  
   def self.search(params)
     Proposal.paginate :page => params[:page], 
       :joins => [:user => :organization],
