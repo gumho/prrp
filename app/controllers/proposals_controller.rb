@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   
-  before_filter :require_owner, :except => [:show, :review, :elect]
+  before_filter :require_owner, :except => [:show, :review, :elect, :unelect]
   before_filter :require_owner_or_review, :only => [:show]
   
   # GET /users/1/proposals
@@ -71,7 +71,7 @@ class ProposalsController < ApplicationController
     @proposal = @user.proposals.find(params[:id])
     @proposal.destroy
 
-    redirect_to(user_proposals_path)
+    redirect_to user_proposals_path
   end
   
   def review
@@ -80,10 +80,28 @@ class ProposalsController < ApplicationController
   end
   
   def elect
-    authorize! :review, :proposals
+    authorize! :elect, :proposals
     @proposal = Proposal.find(params[:id])
     @campus_winner = @proposal.elect(current_term.id, @proposal.id, params[:organization_id])
-    (flash[:error] = @campus_winner.errors[:base]) if @campus_winner.errors.count > 0
+    
+    if @campus_winner.errors.count > 0
+      flash[:error] = @campus_winner.errors[:base]
+    else
+      flash[:notice] = "Proposal has been successfully elected!"
+    end
+    
+    redirect_to user_proposal_path(@proposal.user, @proposal)
+  end
+  
+  def unelect
+    authorize! :elect, :proposals
+    @proposal = Proposal.find(params[:id])
+    @campus_winner = @proposal.unelect(current_term.id, @proposal.id)
+    if @campus_winner != nil
+      flash[:notice] = "Proposal was successfully un-elected!"
+    else
+      flash[:error] = "Proposal was not elected to begin with!"
+    end
     redirect_to user_proposal_path(@proposal.user, @proposal)
   end
   

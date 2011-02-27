@@ -10,6 +10,13 @@ class Proposal < ActiveRecord::Base
       :term_id => term_id, :organization_id => organization_id)
   end
   
+  def unelect(term_id, proposal_id)
+    @campus_winner = CampusWinner.where("term_id = ? AND proposal_id = ?", term_id, proposal_id).first
+    if @campus_winner != nil
+      @campus_winner.destroy
+    end
+  end
+  
   def self.search(params)
     Proposal.paginate :page => params[:page], 
       :joins => [:user => :organization],

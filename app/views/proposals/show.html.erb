@@ -18,12 +18,17 @@
     <%= link_to 'Back', user_proposals_path(@user) %>
 <% end%>
 
-<% if can? :review, :proposals %>
-    un-elect
+<% if can? :elect, :proposals %>
+    <%= form_tag unelect_user_proposal_path(@user, @proposal), :method => 'delete' do %>
+      <%= submit_tag 'Un-Elect Proposal' %>
+    <% end %>
     <%= form_tag elect_user_proposal_path(@user, @proposal), :method => 'put' do %>
       <%= hidden_field_tag :organization_id, @user.organization.id %>
       <%= submit_tag 'Elect Proposal' %>
     <% end %>
+<% end%>
+
+<% if can? :review, :proposals %>
 
     <%= link_to 'Back', review_proposals_path %>
 

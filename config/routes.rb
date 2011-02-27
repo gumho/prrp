@@ -8,6 +8,8 @@ Prrp::Application.routes.draw do
   resources :users do
     resources :proposals do
         put :elect, :on => :member
+        delete :unelect, :on => :member
+        
         get :review, :on => :collection
     end
   
