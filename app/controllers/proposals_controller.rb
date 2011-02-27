@@ -15,7 +15,6 @@ class ProposalsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @proposal = @user.proposals.find(params[:id])
-    @documents = @proposal.documents.all
     @comment = @proposal.comments.new
   end
 

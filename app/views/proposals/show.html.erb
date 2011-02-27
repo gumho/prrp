@@ -8,35 +8,35 @@
 <p>
     <b>Documents:</b>
     <br>
-    <% @documents.each do |doc| %>
-        <%= doc.kind %>: <%= doc.doc_file_name %><br>
+    <% @proposal.documents.each do |doc| %>
+        <%= doc.kind %> <%= link_to doc.doc_file_name, doc.doc.url %><br>
     <% end %>
 </p>
 
 <% if can? :apply, :proposal %>
-<%= link_to 'Edit', edit_user_proposal_path(@user, @proposal) %> |
-<%= link_to 'Back', user_proposals_path(@user) %>
+    <%= link_to 'Edit', edit_user_proposal_path(@user, @proposal) %> |
+    <%= link_to 'Back', user_proposals_path(@user) %>
 <% end%>
 
 <% if can? :review, :proposals %>
-<%= link_to 'Back', review_proposals_path %>
+    <%= link_to 'Back', review_proposals_path %>
 
-<p>Add a comment:</p>
-<%= form_for @comment do |f| %>
-    <%= f.hidden_field :proposal_id %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.text_area :content %> <br>
-    <%= f.submit %>
-<% end %>
+    <p>Add a comment:</p>
+    <%= form_for @comment do |f| %>
+        <%= f.hidden_field :proposal_id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.text_area :content %> <br>
+        <%= f.submit %>
+    <% end %>
 <% end %>
 
 <p>
-<strong>Comments (<%= @proposal.comments.length%>)</strong>
-<ul>
-<% @proposal.comments.each do |c| %>
-    <li>
-        <p><%= c.content%></p>
-    </li>
-<% end %>
-</ul>
+    <strong>Comments (<%= @proposal.comments.length%>)</strong>
+    <ul>
+    <% @proposal.comments.each do |c| %>
+        <li>
+            <p><%= c.content%></p>
+        </li>
+    <% end %>
+    </ul>
 </p>
