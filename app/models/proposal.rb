@@ -17,6 +17,8 @@ class Proposal < ActiveRecord::Base
     end
   end
   
+  
+  
   def self.search(params)
     Proposal.paginate :page => params[:page], 
       :joins => [:user => :organization],
@@ -37,9 +39,21 @@ class Proposal < ActiveRecord::Base
     end
   end
   
+  # FIXME: Consider optimizing...the filters later on.
   def self.filter_conditions(params)
     # add more conditions later
-    query = ['proposals.reviewed == ?', true] unless params[:only_unreviewed].blank?
+    query = []
+    query << reviewed_proposals_conditions(params) unless params[:only_unreviewed].blank?
+    query << organization_conditions(params) unless params[:reviewer_organization].blank?
+    condition = [query.map{|c| c[0] }.join(" AND "), *query.map{|c| c[1..-1] }.flatten]
   end
+  
+    def self.reviewed_proposals_conditions(params)
+      ['proposals.reviewed = ?', true]
+    end
+  
+    def self.organization_conditions(params)
+      ['organizations.name = ?', params[:reviewer_organization]]
+    end
   
 end

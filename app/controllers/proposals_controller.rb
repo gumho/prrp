@@ -76,6 +76,11 @@ class ProposalsController < ApplicationController
   
   def review
     authorize! :review, :proposals
+    
+    if current_user.role.name == 'campus admin' || current_user.role.name == 'campus reviewer'
+      params[:reviewer_organization] = current_user.organization.name
+    end
+    
     @proposals = Proposal.search(params)
   end
   
