@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110224005303) do
+ActiveRecord::Schema.define(:version => 20110227053933) do
+
+  create_table "campus_winners", :force => true do |t|
+    t.integer  "proposal_id"
+    t.integer  "term_id"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
