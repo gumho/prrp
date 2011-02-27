@@ -35,13 +35,20 @@ User.create(:email => "admin@uci.edu",
   :organization => uci,
   :active => true)
 
-student_applicant = User.create(:email => "s@ucd.edu",
+User.create(:email => "admin@ucd.edu",
+  :password => "pppp", 
+  :password_confirmation => "pppp", 
+  :role => campus_admin,
+  :organization => ucd,
+  :active => true)
+
+student_applicant = User.create(:email => "s@uci.edu",
   :first_name => "Congo",
   :last_name => "Jim",
   :password => "pppp", 
   :password_confirmation => "pppp", 
   :role => applicant,
-  :organization => ucd,
+  :organization => uci,
   :active => true)
   
 # Proposals
