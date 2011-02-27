@@ -29,10 +29,6 @@ div.field, div.actions {
   margin-bottom: 10px;
 }
 
-#notice {
-  color: green;
-}
-
 .field_with_errors {
   padding: 2px;
   background-color: red;
@@ -99,13 +95,15 @@ div.field, div.actions {
 #notice {
 }
 	#notice p {
-		width: 50%;
-		margin: 10px auto 0 auto;
-		border: 1px solid #D2E29B;
-		background-color: #EBF3CF;
-		color: #758D57;
-		text-align: center;
+		background-color: #B6E8BB;
+	    border: 3px solid #65B26D;
+	    color: #65B26D;
+	    font-size: 21px;
+	    font-weight: bold;
+	    margin: 5px auto;
+	    text-align: center;
 	}
+	
 #content {
 	border-bottom: 2px solid #C3BC78;
 	background-color: #F8F2DA;
