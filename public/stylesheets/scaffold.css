@@ -7,7 +7,8 @@ body, p, ol, ul, td {
 }
 
 /*----- reset -----*/
-p, a, h1, h2, h3, h4, h5, h6 {
+ul, p, a, h1, h2, h3, h4, h5, h6 {
+	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
@@ -95,13 +96,20 @@ div.field, div.actions {
 #notice {
 }
 	#notice p {
-		background-color: #B6E8BB;
-	    border: 3px solid #65B26D;
-	    color: #65B26D;
 	    font-size: 21px;
 	    font-weight: bold;
 	    margin: 5px auto;
 	    text-align: center;
+	}
+	#notice p#notice {
+		background-color: #B6E8BB;
+	    border: 3px solid #65B26D;
+	    color: #65B26D;
+	}
+	#notice p#error {
+		background-color: coral;
+	    border: 3px solid red;
+	    color: wheat;
 	}
 	
 #content {

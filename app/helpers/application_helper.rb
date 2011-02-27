@@ -18,11 +18,11 @@ module ApplicationHelper
   end
   
   def flash_helper
-      f_names = [:notice, :warning, :message]
+      f_names = [:notice, :error, :warning, :message]
 
       for name in f_names
         if flash[name]
-          fl = "<p>#{flash[name]}</p>".html_safe
+          fl = "<p id=\"#{name}\">#{flash[name]}</p>".html_safe
         end
       flash[name] = nil;
     end
