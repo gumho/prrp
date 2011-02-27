@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   
-  before_filter :require_owner, :except => [:show, :review]
+  before_filter :require_owner, :except => [:show, :review, :elect]
   before_filter :require_owner_or_review, :only => [:show]
   
   # GET /users/1/proposals
@@ -77,6 +77,11 @@ class ProposalsController < ApplicationController
   def review
     authorize! :review, :proposals
     @proposals = Proposal.search(params)
+  end
+  
+  def elect
+    authorize! :review, :proposals
+    render
   end
   
   private

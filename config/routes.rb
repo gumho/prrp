@@ -6,7 +6,10 @@ Prrp::Application.routes.draw do
   match 'ad' => 'home#applicant_dashboard'
   
   resources :users do
-    resources :proposals
+    resources :proposals do
+        put :elect, :on => :member
+        get :review, :on => :collection
+    end
   
     collection do
       get :resend_activation

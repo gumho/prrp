@@ -9,7 +9,7 @@
     <b>Documents:</b>
     <br>
     <% @proposal.documents.each do |doc| %>
-        <%= doc.kind %> <%= link_to doc.doc_file_name, doc.doc.url %><br>
+        <%= link_to doc.kind, doc.doc.url %><br>
     <% end %>
 </p>
 
@@ -19,6 +19,7 @@
 <% end%>
 
 <% if can? :review, :proposals %>
+    <strong><%= link_to "ELECT"%></strong>
     <%= link_to 'Back', review_proposals_path %>
 
     <p>Add a comment:</p>
