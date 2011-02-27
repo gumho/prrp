@@ -74,10 +74,10 @@ div.field, div.actions {
 }
 	#header a {
 		text-decoration: none;
-		color: #111;
+		color: #fff;
 	}
 	#header a:hover {
-		color: #fff;
+		color: #111;
 	}
 	#header h1{
 		margin: 0;
