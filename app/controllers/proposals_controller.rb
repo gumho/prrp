@@ -77,6 +77,7 @@ class ProposalsController < ApplicationController
   def review
     authorize! :review, :proposals
     
+    # campus level users cannot see other organizations' proposals
     if current_user.role.name == 'campus admin' || current_user.role.name == 'campus reviewer'
       params[:reviewer_organization] = current_user.organization.name
     end
