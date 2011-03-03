@@ -19,7 +19,19 @@
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
-    
+  
+  <% if can? :manage, :users %>
+  <div class="field">
+      <%= f.label :role_id %><br>
+      <% if current_user.role.name == 'admin' %>
+          <%= f.select(:role_id, Role.all.collect {|p| [ p.name.capitalize, p.id ] })%>
+      <% else %>
+          <%= f.select(:role_id, {"Applicant" => 2, "Campus Admin" => 3, "Campus Reviewer" => 4} )%>
+      <% end %>
+      
+  </div>
+  <% end %>
+  
   <div class="field">
     <%= f.label :organization_id %><br />
     <%= f.select(:organization_id, Organization.all.collect {|p| [ p.name, p.id ] }) %>
