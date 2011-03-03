@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # GET /users
-  # GET /users.xml
+  
+  
   def index
     authorize! :manage, :users
     
@@ -12,54 +12,44 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1
-  # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
-    end
   end
 
-  # GET /users/new
-  # GET /users/new.xml
   def new
     @user = User.new
-    
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user }
-    end
   end
 
-  # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
   end
 
-  # POST /users
-  # POST /users.xml
   def create
     @user = User.new(params[:user])
     
-    # @user.role = Role.where("name = ?", ["applicant"]).first
-    
-    # Saving without session maintenance to skip
-    # auto-login which can't happen here because
-    # the User has not yet been activated
-    if @user.save_without_session_maintenance
-      @user.deliver_activation_instructions!
-      flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
-      redirect_to root_url
+    if can? :manage, :users
+      if @user.save
+        redirect_to(user_path(@user), :notice => 'User successfully created!')
+      else
+        render :action => "new"
+      end
     else
-      render :action => :new
-    end
+      @user.role_id = 2 # Applicant
+      
+      # Saving without session maintenance to skip
+      # auto-login which can't happen here because
+      # the User has not yet been activated
+      if @user.save_without_session_maintenance
+        @user.deliver_activation_instructions!
+        flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
+        redirect_to root_url
+      else
+        render :action => :new
+      end
+    end    
+
   end
 
-  # PUT /users/1
-  # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
 
@@ -74,8 +64,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -94,6 +82,14 @@ class UsersController < ApplicationController
         flash[:notice] = "Please check your e-mail for your account activation instructions!"
         redirect_to root_path
       end
+    end
+  end
+  
+  def require_owner_or_manage
+    if (params[:user_id] == current_user.id.to_s) || (can? :manage, :users)
+    else
+      flash[:notice] = "You do not have access to this page"
+      redirect_to user_proposals_path(current_user)  
     end
   end
 end
