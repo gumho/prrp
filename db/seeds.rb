@@ -16,6 +16,7 @@ CurrentTerm.create(:term => current_term)
 admin = Role.create(:id => 1, :name => "admin")
 applicant = Role.create(:id => 2, :name => "applicant")
 campus_admin = Role.create(:id => 3, :name => "campus admin")
+campus_reviewer = Role.create(:id => 4, :name => "campus reviewer")
 
 # Organizations
 uci = Organization.create(:id => 1, :name => "UC Irvine", :deadline => Date.today + 5)
