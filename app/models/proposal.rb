@@ -24,7 +24,7 @@ class Proposal < ActiveRecord::Base
   def self.search(params)
     Proposal.paginate :page => params[:page], 
       :joins => [:user => :organization],
-      :per_page => 5,
+      :per_page => 20,
       :order => sort_conditions(params[:sort_by], params[:order]),
       :conditions => filter_conditions(params)
   end
