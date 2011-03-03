@@ -1,7 +1,7 @@
 <h1><%= @organization.name %> Admin Control Panel</h1>
 
 <h2>Manage Organization</h2>
-<%= form_tag('/ca/update', :method => 'put') do %>
+<%= form_tag(update_campus_control_panel_path, :method => 'put') do %>
     <%= label_tag :organization, "Organization" %><br>
     <%= organization_combo_box %><br>
     

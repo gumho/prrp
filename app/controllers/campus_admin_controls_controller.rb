@@ -14,7 +14,7 @@ class CampusAdminControlsController < ApplicationController
     
     if @organization.update_attribute(:deadline, @deadline)
       flash[:notice] = "Successfully updated deadline!"
-      redirect_to ca_path
+      redirect_to campus_control_panel_path
     else
       render :action => "edit"
     end
