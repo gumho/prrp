@@ -18,12 +18,15 @@
     <%= f.text_field :title %>
 </div>
 
+<div class="field">
+    <%= f.select(:award_category_id, options_for_select(AwardCategory.all.collect {|p| [ p.name , p.id] })) %>
+    
+</div>
+
 <ul id="document-list">
-    <% f.fields_for :documents do |builder| %>
+    <%= f.fields_for :documents do |builder| %>
         <%= render :partial => 'document_fields', :locals => { :f => builder} %>    
     <% end %>
-    
-    
 </ul>
 
 <p><%= link_to_add_fields "Add Document", f, :documents %></p>

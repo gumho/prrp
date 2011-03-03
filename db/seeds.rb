@@ -50,11 +50,23 @@ student_applicant = User.create(:email => "s@uci.edu",
   :role => applicant,
   :organization => uci,
   :active => true)
+
+# Award categories
+faculty_initiative = AwardCategory.create(:id => 1,
+  :name => "Faculty Initiative Grant"
+)
+faculty_research_planning = AwardCategory.create(:id => 2,
+  :name => "Faculty Research/Planning Grant"
+)
+advanced_graduate_research = AwardCategory.create(:id => 3,
+  :name => "Advanced Graduate Research"
+)
   
 # Proposals
-for i in 0..50
+for i in 0..20
   Proposal.create(:title => "some fake proposal",
     :user => student_applicant,
-    :term => current_term)
+    :term => current_term,
+    :award_category => faculty_initiative)
 end
   

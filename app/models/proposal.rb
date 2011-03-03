@@ -1,6 +1,8 @@
 class Proposal < ActiveRecord::Base
   belongs_to :user
   belongs_to :term
+  belongs_to :award_category
+  
   has_many :documents
   has_many :comments
   accepts_nested_attributes_for :documents, :allow_destroy => true 
