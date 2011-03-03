@@ -78,6 +78,7 @@ class ProposalsController < ApplicationController
     authorize! :review, :proposals
     
     # campus level users cannot see other organizations' proposals
+    # CHECKME: Does reviewer_organization get set into the response params in view?
     if current_user.role.name == 'campus admin' || current_user.role.name == 'campus reviewer'
       params[:reviewer_organization] = current_user.organization.name
     end
