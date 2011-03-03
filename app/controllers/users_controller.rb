@@ -2,11 +2,13 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
+    authorize! :manage, :users
+    
+    if current_user.role.name == 'admin'
+      @users = User.search(params)
+    elsif current_user.role.name == 'campus admin'
+      params[:user_organization_id] = current_user.organization_id
+      @users = User.search(params)
     end
   end
 

@@ -24,4 +24,19 @@ class User < ActiveRecord::Base
     self.active = true
     save
   end
+  
+  def self.search(params)
+    User.paginate :page => params[:page],
+      :joins => :organization,
+      :per_page => 30,
+      :conditions => search_conditions(params)
+  end
+  
+  def self.search_conditions(params)
+    if params[:user_organization_id]
+      "organization_id = '#{params[:user_organization_id]}'"
+    end
+  end
+  
+  
 end
