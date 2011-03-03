@@ -51,7 +51,9 @@ class ApplicationController < ActionController::Base
     # Path for user type's home
     def role_home_path
       cu = current_user
-      if cu.role.name == 'applicant'
+      if cu.role.name == 'admin'
+        users_path
+      elsif cu.role.name == 'applicant'
         ad_path
       elsif cu.role.name == 'campus admin'
         review_proposals_path
