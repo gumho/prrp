@@ -1,4 +1,23 @@
 module ApplicationHelper
+  def side_menu
+    if !current_user
+      return
+    end
+    
+    if current_user.role.name == 'admin'
+      links = {
+        
+      }
+    elsif current_user.role.name == 'campus admin'
+      links = {
+        'Review' => review_proposals_path,
+        'Campus Admin' => campus_control_panel_path
+      }
+    end
+    
+    render :partial => "shared/side_menu", :locals => { :links => links}
+  end
+  
   def current_term
     begin
       @current_term = CurrentTerm.find(1)

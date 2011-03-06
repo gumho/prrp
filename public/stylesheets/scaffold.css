@@ -64,7 +64,8 @@ div.field, div.actions {
 
 /*----- layout.application -----*/
 #wrapper {
-	width: 900px;
+	position: relative;
+	width: 800px;
 	margin: 0 auto;
 }
 #header {
@@ -93,6 +94,28 @@ div.field, div.actions {
 		right: 0;
 	}
 	
+#side-menu {
+	width: 150px;
+	margin: 10px 10px 0 0;
+	float:left;
+	background-color: #F8F2DA;
+}
+
+	#side-menu ul li {
+	}
+	
+		#side-menu ul li a {
+			display: block;
+			text-decoration: none;
+			padding: 10px;
+			background-color: #F8F2DA;
+		}
+		
+		#side-menu ul li a:hover {
+			color: white;
+			background-color: #f87;
+		}
+	
 #notice {
 }
 	#notice p {
@@ -113,6 +136,9 @@ div.field, div.actions {
 	}
 	
 #content {
+	margin-top: 10px;
+	width: 620px;
+	float: left;
 	border-bottom: 2px solid #C3BC78;
 	background-color: #F8F2DA;
 	padding: 10px;
