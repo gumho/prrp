@@ -99,6 +99,7 @@ div.field, div.actions {
 	margin: 10px 10px 0 0;
 	float:left;
 	background-color: #F8F2DA;
+	border-bottom: 2px solid #C3BC78;
 }
 
 	#side-menu ul li {
