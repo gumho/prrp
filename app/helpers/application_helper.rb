@@ -13,7 +13,8 @@ module ApplicationHelper
       
       links = {
         'Review' => review_proposals_path,
-        'Campus Admin' => campus_control_panel_path,
+        'Campus' => campus_control_panel_path,
+        'Users' => users_path,
         "Elected (#{num_elects})" => campus_winners_path
       }
     elsif current_user.role.name == 'campus reviewer'
