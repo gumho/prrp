@@ -10,7 +10,7 @@ class CampusWinner < ActiveRecord::Base
       num_elects = CampusWinner.where("term_id = ? AND organization_id = ?", record.term_id, record.organization_id).count
       # FIXME: put this into an application config
       if num_elects == 8
-        record.errors[:base] << "Already at the maximum amount of elected proposals!"
+        record.errors[:base] << "Already at the maximum amount of elected proposals (#{num_elects})!"
       end
     end
   
