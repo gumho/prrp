@@ -20,8 +20,14 @@ Prrp::Application.routes.draw do
   
   resources :comments
   
+  # Reviewer stuff
+  resources :campus_winners, :only => [:index]
   match 'proposals/review' => 'proposals#review', :as => :review_proposals
-
+  
+  match '/campus-control-panel' => 'campus_admin_controls#edit', :as => :campus_control_panel
+  match '/campus-control-panel/update' => 'campus_admin_controls#update', :via => [:put], :as => :update_campus_control_panel
+  
+  # Account stuff
   resources :password_resets, :only => [:new, :create, :edit, :update]
   resources :user_sessions, :except => [:edit]
   
@@ -31,8 +37,5 @@ Prrp::Application.routes.draw do
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
   match 'forgot_password' => 'password_resets#new', :as =>:forgot_password
-
-  match '/campus-control-panel' => 'campus_admin_controls#edit', :as => :campus_control_panel
-  match '/campus-control-panel/update' => 'campus_admin_controls#update', :via => [:put], :as => :update_campus_control_panel
   
 end

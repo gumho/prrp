@@ -1,0 +1,14 @@
+<h1>Current Elected</h1>
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Type</th>
+	</tr>
+	<% @winners.each do |winner| %>
+		<tr>
+		<td><a href="<%= user_proposal_path(winner.proposal.user, winner.proposal)%>"><%= winner.proposal.title %></a></td>
+		<td><%= winner.proposal.award_category.name %></td>
+		</tr>
+	<% end%>
+</table>
+	
