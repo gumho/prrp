@@ -9,9 +9,21 @@ module ApplicationHelper
         
       }
     elsif current_user.role.name == 'campus admin'
+      num_elects = CampusWinner.where("term_id = ? AND organization_id = ?", CurrentTerm.all.first.id, current_user.organization_id).count
+      
       links = {
         'Review' => review_proposals_path,
-        'Campus Admin' => campus_control_panel_path
+        'Campus Admin' => campus_control_panel_path,
+        "Elected (#{num_elects})" => campus_winners_path
+      }
+    elsif current_user.role.name == 'campus reviewer'
+      links = {
+        'Review' => review_proposals_path
+      }
+    elsif current_user.role.name == 'applicant'
+      links = {
+        'New Proposal' => new_user_proposal_path(current_user),
+        'Manage Proposals' => user_proposals_path(current_user)
       }
     end
     
