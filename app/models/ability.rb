@@ -26,6 +26,9 @@ class Ability
         can :elect, :proposals
       elsif user.role.name == 'campus reviewer'
         can :review, :proposals
+      elsif user.role.name == 'prrp admin'
+        can :manage, :terms
+      elsif user.role.name == 'prrp reviewer'
       else
         can :do, :nothing
       end
