@@ -3,7 +3,7 @@
 <div>
 	<% if current_term.term.active %>
 		<div id="progress-bar">
-			<div id="ui-progress" style="width: <%= time_progress_percentage_css(current_term.term.begin, current_term.term.end, Date.today) %>%">
+			<div id="ui-progress" style="width: <%= time_progress_percentage_css(current_term.term.begin, current_term.term.end) %>%">
 				
 			</div>
 		</div>
