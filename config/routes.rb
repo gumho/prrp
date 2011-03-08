@@ -18,9 +18,12 @@ Prrp::Application.routes.draw do
     end
   end
   
+  # Prrp admin stuff
+  resources :terms, :only => [:index]
+    
+  # Reviewer stuff
   resources :comments
   
-  # Reviewer stuff
   resources :campus_winners, :only => [:index]
   match 'proposals/review' => 'proposals#review', :as => :review_proposals
   

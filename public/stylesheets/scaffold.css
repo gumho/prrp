@@ -144,3 +144,23 @@ div.field, div.actions {
 	background-color: #F8F2DA;
 	padding: 10px;
 }
+
+/*------ terms#index -------*/
+#progress-bar {
+	border: 1px solid #aaa;
+	background: #F6F1DC;
+	height: 30px;
+	position: relative;
+}
+	#ui-progress {
+		text-align: center;
+		width: 50%;
+		background: #f87;
+		height: 28px;
+		border: 1px solid #f37;
+	}
+	#begin-marker {
+	}
+	#end-marker {
+		float: right;
+	}

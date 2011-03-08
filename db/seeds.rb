@@ -7,7 +7,7 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 # Terms
-current_term = Term.create(:begin => Date.today, :end => Date.today + 1)
+current_term = Term.create(:begin => Date.today-50, :end => Date.today + 50, :active => true)
 
 # Current Term
 CurrentTerm.create(:term => current_term)
@@ -17,6 +17,7 @@ admin = Role.create(:id => 1, :name => "admin")
 applicant = Role.create(:id => 2, :name => "applicant")
 campus_admin = Role.create(:id => 3, :name => "campus admin")
 campus_reviewer = Role.create(:id => 4, :name => "campus reviewer")
+prrp_admin = Role.create(:id => 5, :name => "prrp admin")
 
 # Organizations
 uci = Organization.create(:id => 1, :name => "UC Irvine", :deadline => Date.today + 5)
@@ -40,6 +41,13 @@ User.create(:email => "admin@ucd.edu",
   :password => "pppp", 
   :password_confirmation => "pppp", 
   :role => campus_admin,
+  :organization => ucd,
+  :active => true)
+
+User.create(:email => "a@prrp.org",
+  :password => "pppp", 
+  :password_confirmation => "pppp", 
+  :role => prrp_admin,
   :organization => ucd,
   :active => true)
 

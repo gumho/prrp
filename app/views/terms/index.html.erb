@@ -1,0 +1,34 @@
+<h1>Terms</h1>
+<h2>Current Term</h2>
+<div>
+	<% if current_term.term.active %>
+		<div id="progress-bar">
+			<div id="ui-progress" style="width: <%= time_progress_percentage_css(current_term.term.begin, current_term.term.end, Date.today) %>%">
+				
+			</div>
+		</div>
+		<div id="term-markers">
+			<span id="begin-marker"><%= current_term.term.begin %></span>
+			<span id="end-marker"><%= current_term.term.end %></span>
+		</div>
+	<% else %>
+		<p>No term is in session. Create one now...(link)</p>
+	<% end%>
+</div>
+
+<h2 style="clear: right">All</h2>
+<%= page_entries_info @terms %>
+<%= will_paginate @terms %>
+
+<table border="0" cellspacing="5" cellpadding="5">
+    <tr>
+        <th>Terms</th>
+		<th>Active?</th>
+    </tr>
+    <% @terms.each do |term| %>
+    <tr>
+        <td><%= term.begin %> to <%= term.end%></td>
+		<td><%= term.active %></td>
+    </tr>
+    <% end %>
+</table>

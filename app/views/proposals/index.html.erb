@@ -14,7 +14,7 @@
 <% @proposals.each do |proposal| %>
   <tr>
     <td><%= proposal.title %></td>
-    <td><%= proposal.term_id%></td>
+    <td><%= proposal.term.begin%></td>
     <td><%= link_to 'Show', user_proposal_path(@user, proposal) %></td>
     <td><%= link_to 'Edit', edit_user_proposal_path(@user, proposal) %></td>
     <td><%= link_to 'Destroy', [@user, proposal], :confirm => 'Are you sure?', :method => :delete %></td>

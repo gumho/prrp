@@ -26,6 +26,10 @@ module ApplicationHelper
         'New Proposal' => new_user_proposal_path(current_user),
         'Manage Proposals' => user_proposals_path(current_user)
       }
+    elsif current_user.role.name == 'prrp admin'
+      links = {
+        'Terms' => terms_path
+      }
     end
     
     render :partial => "shared/side_menu", :locals => { :links => links}
