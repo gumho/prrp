@@ -19,8 +19,12 @@ Prrp::Application.routes.draw do
   end
   
   # Prrp admin stuff
-  resources :terms, :only => [:index]
-    
+  # resources :terms, :only => [:index]
+  resources :terms do
+    put :activate, :on => :member
+    put :deactivate, :on => :member
+  end
+  
   # Reviewer stuff
   resources :comments
   

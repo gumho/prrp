@@ -11,8 +11,20 @@
 			<span id="begin-marker"><%= current_term.term.begin %></span>
 			<span id="end-marker"><%= current_term.term.end %></span>
 		</div>
+		
+		<%= form_tag deactivate_term_path(current_term.term), :method => 'put' do %>	
+			<%= hidden_field_tag :active, false %>
+			<%= submit_tag 'Suspend Term' %>
+		<% end %>
+		
+	<% elsif !current_term.term.active %>
+		<p>Term in not active.</p>
+		<%= form_tag activate_term_path(current_term.term), :method => 'put' do %>	
+			<%= hidden_field_tag :active, true %>
+			<%= submit_tag 'Activate Term' %>
+		<% end %>
 	<% else %>
-		<p>No term is in session. Create one now...(link)</p>
+		<p>No term is in session. <a href="#">Create one now</a></p>
 	<% end%>
 </div>
 
