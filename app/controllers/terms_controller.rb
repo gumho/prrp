@@ -1,5 +1,6 @@
 class TermsController < ApplicationController
-  # auth unneeded because cancan is managing resources
+  
+  before_filter :auth, :only => [:index]
   def index
     @terms = Term.paginate :page => params[:page], 
       :per_page => 20,
@@ -7,6 +8,6 @@ class TermsController < ApplicationController
   end
   
   def auth
-    # IMPLEMENT ME
+    authorize! :manage, :terms
   end
 end
