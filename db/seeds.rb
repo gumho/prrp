@@ -64,10 +64,7 @@ advanced_graduate_research = AwardCategory.create(:id => 3,
 )
   
 # Proposals
-for i in 0..20
-  Proposal.create(:title => "some fake proposal",
-    :user => student_applicant,
-    :term => current_term,
-    :award_category => faculty_initiative)
-end
-  
+Proposal.create(:title => "some fake proposal",
+  :user => student_applicant,
+  :term => current_term,
+  :award_category => faculty_initiative)
