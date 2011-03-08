@@ -2,6 +2,7 @@ class ProposalsController < ApplicationController
   
   before_filter :require_owner, :except => [:show, :review, :elect, :unelect]
   before_filter :require_owner_or_review, :only => [:show]
+  before_filter :require_no_submissions_current_term, :only => [:new, :create]
   
   # GET /users/1/proposals
   # GET /users/1/proposals.xml
@@ -21,14 +22,16 @@ class ProposalsController < ApplicationController
   # GET /users/1/proposals/new
   # GET /users/1/proposals/new.xml
   def new
+    # Don't show page if term is not active
     if !current_term
-      flash[:notice] = "Sorry, the current term is not active yet."
+      flash[:error] = "Sorry, the current term is not active yet!"
       redirect_to root_path
       return
     end
+    
     @user = User.find(params[:user_id])
+    
     @proposal = Proposal.new
-  
     @proposal.documents.build
   end
 
@@ -113,6 +116,15 @@ class ProposalsController < ApplicationController
   end
   
   private
+  
+  # Redirect if user has already submitted this term
+  def require_no_submissions_current_term
+    user_proposals_this_term = Proposal.where("user_id = ? AND term_id = ?", params[:user_id], current_term).count
+    if user_proposals_this_term >= 1
+      flash[:error] = 'You have already submitted a proposal this term!'
+      redirect_to user_proposals_path(@user)
+    end
+  end
   
   def require_owner
     if params[:user_id] != current_user.id.to_s
