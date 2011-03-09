@@ -20,10 +20,8 @@ Prrp::Application.routes.draw do
   
   # Prrp admin stuff
   resources :terms do
-    put :activate, :on => :member
-    put :deactivate, :on => :member
-    post :set_current, :on => :member
-    post :unset_current, :on => :member
+    put :set_current, :on => :member
+    put :suspend, :on => :member
   end
   
   # Reviewer stuff

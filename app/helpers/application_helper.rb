@@ -9,13 +9,21 @@ module ApplicationHelper
         
       }
     elsif current_user.role.name == 'campus admin'
-      num_elects = CampusWinner.where("term_id = ? AND organization_id = ?", CurrentTerm.all.first.id, current_user.organization_id).count
-      
+      # Get number of current winners to display in side menu
+      if current_term
+        num_elects = CampusWinner.where("term_id = ? AND organization_id = ?", current_term.id, current_user.organization_id).count
+        num_elects = '(' + num_elects.to_s + ')'
+      else
+        num_elects = ''
+      end
+
+        
+      num_elects = 0 if (num_elects == nil)
       links = {
         'Review' => review_proposals_path,
         'Campus' => campus_control_panel_path,
         'Users' => users_path,
-        "Elected (#{num_elects})" => campus_winners_path
+        "Elected #{num_elects}" => campus_winners_path
       }
     elsif current_user.role.name == 'campus reviewer'
       links = {
@@ -36,13 +44,7 @@ module ApplicationHelper
   end
   
   def current_term
-    begin
-      @current_term = CurrentTerm.find(1)
-    rescue ActiveRecord::RecordNotFound
-      return nil
-    else
-      return @current_term
-    end
+      @current_term = Term.where('active = ?', true).first
   end
   
   def link_to_add_fields(name, f, association)

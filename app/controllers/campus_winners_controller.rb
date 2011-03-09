@@ -3,7 +3,7 @@ class CampusWinnersController < ApplicationController
   before_filter :auth
   
   def index
-    @winners = CampusWinner.where("term_id = ? AND organization_id = ?", CurrentTerm.all.first.id, current_user.organization_id)
+    @winners = CampusWinner.where("term_id = ? AND organization_id = ?", current_term.id , current_user.organization_id)
   end
   
   def auth

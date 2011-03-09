@@ -9,9 +9,6 @@
 # Terms
 current_term = Term.create(:begin => Date.today - 75, :end => Date.today + 23, :active => true)
 
-# Current Term
-CurrentTerm.create(:term => current_term)
-
 # Roles
 admin = Role.create(:id => 1, :name => "admin")
 applicant = Role.create(:id => 2, :name => "applicant")

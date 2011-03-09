@@ -24,42 +24,32 @@ class TermsController < ApplicationController
   
   def destroy
     @term = Term.find(params[:id])
-    
-    # if term is the 'current' term, destroy that
-    current = CurrentTerm.all.first
-    if current
-      if @term.id == current.id
-        current.destroy
-      end
-    end
-    
-    # lastly, destroy the term
     @term.destroy
     
     redirect_to terms_path, :notice => 'Term was successfully destroyed'
   end
   
   def set_current
+    # un-set old
+    if current_term
+      old = current_term
+      old.active = false
+      old.save
+    end
     
-  end
-  
-  def unset_current
-    
-  end
-  
-  def activate
-    term = current_term.term
+    # save the new one
+    term = Term.find(params[:id])
     term.active = true
     if term.save
-      redirect_to terms_path, :notice => 'Term was successfully activated'
+      redirect_to terms_path, :notice => 'Term was successfully set!'
     end
   end
   
-  def deactivate
-    term = current_term.term
+  def suspend
+    term = Term.find(params[:id])
     term.active = false
     if term.save
-      redirect_to terms_path, :notice => 'Term was successfully de-activated'
+      redirect_to terms_path, :notice => 'Term was successfully suspended!'
     end
   end
   
