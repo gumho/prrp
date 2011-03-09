@@ -1,0 +1,18 @@
+<%= form_for @term do |f| %>
+<div class="field">
+	<%= f.label :begin %><br>
+	<%= f.date_select :begin %>
+</div>
+
+<div class="field">
+	<%= f.label :end %><br>
+	<%= f.date_select :end %>
+</div>
+
+<div class="field">
+	<%= f.label :active %>
+	<%= f.check_box :active %>
+</div>
+
+<%= f.submit %>
+<% end -%>
