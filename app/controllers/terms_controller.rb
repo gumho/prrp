@@ -1,7 +1,11 @@
 class TermsController < ApplicationController
   
   before_filter :auth
-
+  
+  def show
+    @term = Term.find(params[:id])
+  end
+  
   def index
     @terms = Term.paginate :page => params[:page], 
       :per_page => 20,
@@ -16,7 +20,7 @@ class TermsController < ApplicationController
     @term = Term.new(params[:term])
     
     if @term.save
-      redirect_to terms_path, :notice => 'Term successfully created'
+      redirect_to terms_path, :notice => 'Term successfully created!'
     else
       render :action => "new"
     end
@@ -26,7 +30,20 @@ class TermsController < ApplicationController
     @term = Term.find(params[:id])
     @term.destroy
     
-    redirect_to terms_path, :notice => 'Term was successfully destroyed'
+    redirect_to terms_path, :notice => 'Term successfully destroyed!'
+  end
+  
+  def edit
+    @term = Term.find(params[:id])
+  end
+  
+  def update
+    @term = Term.find(params[:id])
+    if @term.update_attributes(params[:term])
+      redirect_to term_path(@term), :notice => "Term successfully updated!"
+    else
+      render :action => 'edit'
+    end
   end
   
   def set_current
