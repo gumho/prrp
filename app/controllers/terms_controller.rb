@@ -19,10 +19,17 @@ class TermsController < ApplicationController
   def create
     @term = Term.new(params[:term])
     
+    # un-set old
+    if current_term
+      old = current_term
+      old.active = false
+      old.save
+    end
+    
     if @term.save
       redirect_to terms_path, :notice => 'Term successfully created!'
     else
-      render :action => "new"
+      flash[:error] = 'An error occured'
     end
   end
   
@@ -59,6 +66,9 @@ class TermsController < ApplicationController
     term.active = true
     if term.save
       redirect_to terms_path, :notice => 'Term was successfully set!'
+    else
+      flash[:error] = 'An error occured'
+      redirect_to terms_path
     end
   end
   
@@ -67,6 +77,9 @@ class TermsController < ApplicationController
     term.active = false
     if term.save
       redirect_to terms_path, :notice => 'Term was successfully suspended!'
+    else
+      flash[:error] = 'An error occured'
+      redirect_to terms_path
     end
   end
   
