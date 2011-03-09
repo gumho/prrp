@@ -1,30 +1,32 @@
 <h1>Terms</h1>
 <h2>Current Term</h2>
 <div>
-	<% if current_term.term.active %>
-		<div id="progress-bar">
-			<div id="ui-progress" style="width: <%= time_progress_percentage_css(current_term.term.begin, current_term.term.end) %>%">
+	<% if current_term %>
+		<% if current_term.term.active %>
+			<div id="progress-bar">
+				<div id="ui-progress" style="width: <%= time_progress_percentage_css(current_term.term.begin, current_term.term.end) %>%">
 				
+				</div>
 			</div>
-		</div>
-		<div id="term-markers">
-			<span id="begin-marker"><%= current_term.term.begin %></span>
-			<span id="end-marker"><%= current_term.term.end %></span>
-		</div>
+			<div id="term-markers">
+				<span id="begin-marker"><%= current_term.term.begin %></span>
+				<span id="end-marker"><%= current_term.term.end %></span>
+			</div>
 		
-		<%= form_tag deactivate_term_path(current_term.term), :method => 'put' do %>	
-			<%= hidden_field_tag :active, false %>
-			<%= submit_tag 'Suspend Term' %>
-		<% end %>
-		
-	<% elsif !current_term.term.active %>
-		<p>The current term <%= current_term.term.begin %> to <%= current_term.term.end %> is not active.uma</p>
-		<%= form_tag activate_term_path(current_term.term), :method => 'put' do %>	
-			<%= hidden_field_tag :active, true %>
-			<%= submit_tag 'Activate Term' %>
+			<%= form_tag deactivate_term_path(current_term.term), :method => 'put' do %>	
+				<%= hidden_field_tag :active, false %>
+				<%= submit_tag 'Suspend Term' %>
+			<% end %>
+		    
+		<% else%>		
+			<p>The current term <%= current_term.term.begin %> to <%= current_term.term.end %> is not active.uma</p>
+			<%= form_tag activate_term_path(current_term.term), :method => 'put' do %>	
+				<%= hidden_field_tag :active, true %>
+				<%= submit_tag 'Activate Term' %>
+			<% end %>
 		<% end %>
 	<% else %>
-		<p>No term is in session. <a href="#">Create one now</a></p>
+		<p>No term is in session. <%= link_to "Create new Term", new_term_path %></p>
 	<% end%>
 </div>
 
@@ -36,11 +38,18 @@
     <tr>
         <th>Terms</th>
 		<th>Active?</th>
+		<th></th>
+		<th></th>
+		<th></th>
     </tr>
     <% @terms.each do |term| %>
     <tr>
         <td><%= term.begin %> to <%= term.end%></td>
 		<td><%= term.active %></td>
+		<td><%= link_to 'Destroy', term_path(term.id), :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= link_to 'Edit', edit_term_path(term.id) %></td>
+		<td><%= link_to 'Set Current', set_current_term_path(term.id) %></td>
+		<td><%= link_to 'Unset Current', unset_current_term_path(term.id) %></td>
     </tr>
     <% end %>
 </table>
