@@ -18,7 +18,7 @@
 		<% end %>
 		
 	<% elsif !current_term.term.active %>
-		<p>Term in not active.</p>
+		<p>The current term <%= current_term.term.begin %> to <%= current_term.term.end %> is not active.uma</p>
 		<%= form_tag activate_term_path(current_term.term), :method => 'put' do %>	
 			<%= hidden_field_tag :active, true %>
 			<%= submit_tag 'Activate Term' %>
