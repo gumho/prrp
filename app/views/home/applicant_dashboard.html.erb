@@ -1,6 +1,6 @@
 <h1>Applicant Dashboard</h1>
 <% if @current_term %>
-    <%= link_to "Create a new proposal for term #{@current_term.term.begin.year} to #{@current_term.term.end.year}", new_user_proposal_path(current_user)%>
+    <%= link_to "Create a new proposal for term #{@current_term.begin.year} to #{@current_term.end.year}", new_user_proposal_path(current_user)%>
 <% else %>
     Term is not in session at the moment
 <% end %>
