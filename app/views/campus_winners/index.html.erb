@@ -3,6 +3,14 @@
 <%= page_entries_info @winners %>
 <%= will_paginate @winners %>
 
+
 <table>
-	
+	<tr>
+		<th>Title</th>
+	</tr>
+	<% @winners.each do |winner| %>
+		<tr>
+		<td><%= link_to winner.proposal.title, user_proposal_path(winner.proposal.user, winner.proposal) %></td>
+		<tr>
+	<% end %>
 </table>
