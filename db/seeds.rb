@@ -7,7 +7,7 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 # Terms
-current_term = Term.create(:begin => Date.today-50, :end => Date.today + 50, :active => true)
+current_term = Term.create(:begin => Date.today - 75, :end => Date.today + 23, :active => true)
 
 # Current Term
 CurrentTerm.create(:term => current_term)
