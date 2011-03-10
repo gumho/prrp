@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110309033611) do
+ActiveRecord::Schema.define(:version => 20110310005037) do
 
   create_table "award_categories", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20110309033611) do
     t.integer  "term_id"
     t.boolean  "reviewed",          :default => false
     t.integer  "award_category_id"
+    t.boolean  "assigned",          :default => false
   end
 
   create_table "roles", :force => true do |t|
