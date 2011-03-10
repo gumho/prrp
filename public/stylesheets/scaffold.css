@@ -13,7 +13,8 @@ ul, p, a, h1, h2, h3, h4, h5, h6 {
 	padding: 0;
 }
 
-p, h1, h2, h3, h4, h5, h6 { padding: 10px 0 10px 0;}
+h1 { padding: 0 0 10px 0;}
+p, h2, h3, h4, h5, h6 { padding: 10px 0 10px 0;}
 
 /*----- rails -----*/
 pre {
