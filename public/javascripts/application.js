@@ -16,7 +16,8 @@ var droppableOptions = {
 	hoverClass: 'drag-hover',
 	drop: function(event, ui) {
 		$(this).effect("highlight", {}, 700);
-		var newDraggable = $("<li user_id='" + ui.draggable.attr('user_id') + "' class='draggable'></li>").text(ui.draggable.text()).draggable(draggableOptions);
+		var newDraggable = $("<li user_id='" + ui.draggable.attr('user_id') + "' class='draggable'></li>").text(ui.draggable.text());
+		newDraggable.draggable(draggableOptions);
 		$(this).append(newDraggable);
 		ui.draggable.remove();
 	}

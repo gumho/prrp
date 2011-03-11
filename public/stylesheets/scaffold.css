@@ -168,7 +168,7 @@ div.field, div.actions {
 
 /*------ proposals#assignment_index ------*/
 .available-reviewers {
-	border: 1px solid #D5AF6D;
+	border: 2px solid #D5AF6D;
 	height: 100px;
 }
 .draggable {
@@ -182,7 +182,7 @@ div.field, div.actions {
 .proposal-reviewers {
 	height:100px;
 	width: 300px;
-	border: 1px solid #D5AF6D;
+	border: 2px solid #D5AF6D;
 }
 
 .drag-active {
