@@ -35,6 +35,7 @@ GEM
     cancan (1.5.1)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    hirb (0.4.0)
     i18n (0.5.0)
     jquery-rails (0.2.6)
       rails (~> 3.0)
@@ -86,6 +87,7 @@ PLATFORMS
 DEPENDENCIES
   authlogic
   cancan
+  hirb
   jquery-rails
   paperclip
   railroady
