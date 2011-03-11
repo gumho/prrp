@@ -118,20 +118,20 @@ div.field, div.actions {
 			background-color: #f87;
 		}
 	
-#notice {
+#flash {
 }
-	#notice p {
+	#flash p {
 	    font-size: 21px;
 	    font-weight: bold;
 	    margin: 5px auto;
 	    text-align: center;
 	}
-	#notice p#notice {
+	#flash p#notice {
 		background-color: #B6E8BB;
 	    border: 3px solid #65B26D;
 	    color: #65B26D;
 	}
-	#notice p#error {
+	#flash p#error {
 		background-color: coral;
 	    border: 3px solid red;
 	    color: wheat;
@@ -173,9 +173,9 @@ div.field, div.actions {
 }
 .draggable {
 	text-indent: 5px;
+	height: 21px;
 	cursor: move;
 	color: #333;
-	border: 1px dotted #ccc;
 	background: url(/images/reviewer_drag_shader.png);		
 }
 
