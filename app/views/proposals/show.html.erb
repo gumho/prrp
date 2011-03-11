@@ -48,7 +48,7 @@
     <strong>Comments (<%= @proposal.comments.length%>)</strong>
     <ul>
     <% @proposal.comments.each do |c| %>
-	<%= User.find(c.user_id).first_name%> <%= User.find(c.user_id).last_name %> wrote:
+	<%= "#{c.user.first_name} wrote:" if !"#{c.user.first_name}".blank?%>
         <li>
             <p><%= c.content%></p>
         </li>
