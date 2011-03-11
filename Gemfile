@@ -6,10 +6,10 @@ gem 'paperclip'
 gem 'jquery-rails'
 gem 'cancan'
 gem 'will_paginate', '~> 3.0.pre2'
+gem 'hirb'
 
 group :development, :test do
     gem 'railroady'
-	gem 'hirb'
 end
 
 # Bundle edge Rails instead:
