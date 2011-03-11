@@ -19,6 +19,7 @@
         <th><%= sort_link('author')%></th>
         <th><%= sort_link('organization')%></th>
         <th><%= sort_link('reviewed')%></th>
+		<th>Assigned</th>
     </tr>
     <% @proposals.each do |proposal| %>
     <tr>
@@ -26,6 +27,7 @@
         <td><%= proposal.user.first_name %> <%= proposal.user.last_name %></td>
         <td><%= proposal.user.organization.name %></td>
         <td><%= proposal.reviewed %></td>
+		<td><% proposal.assigned %></td>
     </tr>
     <% end %>
 </table>

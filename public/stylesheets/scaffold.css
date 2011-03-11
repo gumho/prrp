@@ -165,3 +165,30 @@ div.field, div.actions {
 	#end-marker {
 		float: right;
 	}
+
+/*------ proposals#assignment_index ------*/
+.available-reviewers {
+	border: 1px solid #D5AF6D;
+	height: 100px;
+}
+.draggable {
+	text-indent: 5px;
+	cursor: move;
+	color: #333;
+	border: 1px dotted #ccc;
+	background: url(/images/reviewer_drag_shader.png);		
+}
+
+.proposal-reviewers {
+	height:100px;
+	width: 300px;
+	border: 1px solid #D5AF6D;
+}
+
+.drag-active {
+	border: 2px solid #4A1AFF;
+}
+
+.drag-hover {
+	border: 2px solid #96d315;
+}

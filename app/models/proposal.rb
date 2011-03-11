@@ -5,6 +5,8 @@ class Proposal < ActiveRecord::Base
   
   has_many :documents
   has_many :comments
+  has_many :assignments, :dependent => :destroy
+  
   accepts_nested_attributes_for :documents, :allow_destroy => true 
   
   validates_presence_of :user_id, :term_id, :award_category

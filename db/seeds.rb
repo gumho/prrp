@@ -15,6 +15,7 @@ applicant = Role.create(:id => 2, :name => "applicant")
 campus_admin = Role.create(:id => 3, :name => "campus admin")
 campus_reviewer = Role.create(:id => 4, :name => "campus reviewer")
 prrp_admin = Role.create(:id => 5, :name => "prrp admin")
+prrp_reviewer = Role.create(:id => 6, :name => "prrp reviewer")
 
 # Organizations
 uci = Organization.create(:id => 1, :name => "UC Irvine", :deadline => Date.today + 5)
@@ -48,7 +49,34 @@ User.create(:email => "a@prrp.org",
   :organization => ucd,
   :active => true)
 
-student_applicant = User.create(:email => "s@uci.edu",
+pr_a = User.create(:email => "ra@prrp.org",
+  :first_name => "Barnes",
+  :last_name => "Lang",
+  :password => "pppp", 
+  :password_confirmation => "pppp", 
+  :organization => uci,
+  :role => prrp_reviewer,
+  :active => true)
+
+pr_b = User.create(:email => "rb@prrp.org",
+  :first_name => "Rod",
+  :last_name => "Danger",
+  :password => "pppp", 
+  :password_confirmation => "pppp", 
+  :organization => uci,
+  :role => prrp_reviewer,
+  :active => true)
+
+pr_c = User.create(:email => "rc@prrp.org",
+  :first_name => "Cor",
+  :last_name => "Roa",
+  :password => "pppp", 
+  :password_confirmation => "pppp", 
+  :organization => ucd,
+  :role => prrp_reviewer,
+  :active => true)
+  
+sa_a = User.create(:email => "sa@uci.edu",
   :first_name => "Congo",
   :last_name => "Jim",
   :password => "pppp", 
@@ -57,6 +85,15 @@ student_applicant = User.create(:email => "s@uci.edu",
   :organization => uci,
   :active => true)
 
+sa_b = User.create(:email => "sb@uci.edu",
+  :first_name => "Renee",
+  :last_name => "Forge",
+  :password => "pppp", 
+  :password_confirmation => "pppp", 
+  :role => applicant,
+  :organization => ucd,
+  :active => true)
+  
 # Award categories
 faculty_initiative = AwardCategory.create(:id => 1,
   :name => "Faculty Initiative Grant"
@@ -69,7 +106,17 @@ advanced_graduate_research = AwardCategory.create(:id => 3,
 )
   
 # Proposals
-Proposal.create(:title => "some fake proposal",
-  :user => student_applicant,
+p_a = Proposal.create(:title => "Deep Earth Mining in Chile",
+  :user => sa_a,
   :term => current_term,
   :award_category => faculty_initiative)
+  
+p_b = Proposal.create(:title => "Video Game Culture in Asia",
+  :user => sa_b,
+  :term => current_term,
+  :award_category => faculty_initiative)
+  
+Assignment.create(:term => current_term,
+  :user => pr_a,
+  :proposal => p_a
+)

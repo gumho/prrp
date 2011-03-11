@@ -1,0 +1,42 @@
+<% content_for :javascript_includes do %>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script>
+	<script src="/javascripts/json2.js"></script>
+<% end%>
+<h1>Proposal Assignments</h1>
+<a href="#"id="assignments-save">Save All</a>
+<div>
+	<h2>Available Reviewers</h2>
+	<p>Drag and drop a reviewer's name below to any proposal or back to the available reviewers' pool. Click 'Save all' when  finished.</p>
+	<ul class="available-reviewers">
+		<% @users.each do |user| %>
+			<li user_id="<%= user.id %>" class="draggable"><%= draggable_title(user)%></li>
+		<% end%>
+	</ul>
+</div>
+
+<h2>Proposals</h2>
+<%= page_entries_info @proposals %>
+<%= will_paginate @proposals %>
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Campus</th>
+		<th>Reviewers</th>
+	</tr>
+
+	<% @proposals.each do |proposal| %>
+		<tr proposal_id="<%= proposal.id %>">
+			<td><%= proposal.title %></td>
+			<td><%= proposal.user.organization.name %></td>
+			<td>
+				<ul class="proposal-reviewers">
+				<% proposal.assignments.each do |a| %>
+					<li user_id="<%= a.user.id %>" class="draggable"><%= draggable_title(a.user) %></li>
+				<% end %>
+				</ul>
+			</td>
+		</tr>
+	<% end%>
+
+</table>

@@ -1,7 +1,5 @@
 Prrp::Application.routes.draw do
 
-  get "comments/create"
-
   root :to => 'home#index'
   match 'ad' => 'home#applicant_dashboard'
   
@@ -24,8 +22,14 @@ Prrp::Application.routes.draw do
     put :suspend, :on => :member
   end
   
+  get 'proposals/assignment_index' => 'proposals#assignment_index', :as => :assignment_index_proposals
+  
+  put 'assignments/multi_update' => 'assignments#multi_update', :as => :multi_update_assignments
+  
   # Reviewer stuff
-  resources :comments
+  resources :comments do
+    get :create
+  end
   
   resources :campus_winners, :only => [:index]
   match 'proposals/review' => 'proposals#review', :as => :review_proposals

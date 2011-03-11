@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   
-  before_filter :require_owner, :except => [:show, :review, :elect, :unelect]
+  before_filter :require_owner, :except => [:show, :review, :elect, :unelect, :assignment_index]
   before_filter :require_owner_or_review, :only => [:show]
   before_filter :require_no_submissions_current_term, :only => [:new, :create]
   
@@ -81,12 +81,25 @@ class ProposalsController < ApplicationController
     authorize! :review, :proposals
     
     # campus level users cannot see other organizations' proposals
-    # CHECKME: Does reviewer_organization get set into the response params in view?
     if current_user.role.name == 'campus admin' || current_user.role.name == 'campus reviewer'
       params[:reviewer_organization] = current_user.organization.name
     end
     
     @proposals = Proposal.search(params)
+  end
+  
+  def assignment_index
+    authorize! :assign, :proposals
+    @users = User.find(:all, 
+      :conditions => "roles.name = 'prrp reviewer' AND users.id not in (SELECT assignments.user_id FROM assignments WHERE term_id = 1)", 
+      :joins => :role)
+    
+    @proposals = Proposal.paginate(:page => params[:page],
+      :include => :assignments,
+      :joins => :term,
+      :per_page => 20,
+      :conditions => "terms.id = #{current_term.id}"
+    )
   end
   
   def elect

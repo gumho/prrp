@@ -36,7 +36,8 @@ module ApplicationHelper
       }
     elsif current_user.role.name == 'prrp admin'
       links = {
-        'Terms' => terms_path
+        'Terms' => terms_path,
+        'Assign' => assignment_index_proposals_path
       }
     end
     
