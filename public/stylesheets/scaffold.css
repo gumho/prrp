@@ -192,3 +192,11 @@ div.field, div.actions {
 .drag-hover {
 	border: 2px solid #96d315;
 }
+
+#load-ball {
+	display: none;
+	vertical-align: middle;
+	background: url(/images/load_ball.gif);
+	height: 16px;
+	width: 16px;
+}

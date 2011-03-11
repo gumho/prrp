@@ -15,8 +15,7 @@ class AssignmentsController < ApplicationController
     end    
     
     respond_to do |format|
-      # FIX THIS!!!!!!!!!!!!!!!!!!!!!!!!!
-      format.json  { render :json => "{'u': 'u'}" }
+      format.json  { render :json => "{'success': 'true'}" }
     end
   end
   

@@ -9,7 +9,6 @@ function add_fields(link, association, content) {
 }
 
 // assignment_index
-
 var draggableOptions = {revert: 'invalid'};
 var droppableOptions = {
 	activeClass: 'drag-active',
@@ -53,13 +52,16 @@ $(document).ready(function() {
 		
 		//send json to server
 		$.ajax({
-		      type: "POST",
-		      url: '/assignments/multi_update.json',
-		      data: { _method: 'PUT', data: JSON.stringify(pack) },
-		      dataType: 'json',
-		      success: function(msg) {
-		        alert( "Data Saved: " + msg );
-		      }
+			type: "POST",
+			url: '/assignments/multi_update.json',
+			data: { _method: 'PUT', data: JSON.stringify(pack) },
+			dataType: 'json',
+			beforeSend: function() {
+				$('#load-ball').fadeIn();
+			},
+			complete: function() {
+				$('#load-ball').fadeOut();
+			}
 		});
 		
 		return false;
