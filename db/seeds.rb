@@ -22,7 +22,7 @@ uci = Organization.create(:id => 1, :name => "UC Irvine", :deadline => Date.new(
 ucd = Organization.create(:id => 2, :name => "UC Davis", :deadline => Date.new(2011, 11, 16))
 ucla = Organization.create(:id => 3, :name => "UC Los Angeles", :deadline => Date.new(2011, 12, 11))
 ucsd = Organization.create(:id => 4, :name => "UC San Diego", :deadline => Date.new(2011, 12, 1))
-ucsc = Organization.create(:id => 5, :name => "UC Santa Cruz", :deadline => Date.new(2011, 12, 1)
+ucsc = Organization.create(:id => 5, :name => "UC Santa Cruz", :deadline => Date.new(2011, 12, 1))
 ucm = Organization.create(:id => 6, :name => "UC Merced", :deadline => Date.new(2011, 12, 3))
 ucb = Organization.create(:id => 7, :name => "UC Berkeley", :deadline => Date.new(2011, 12, 6))
 ucsb = Organization.create(:id => 8, :name => "UC Santa Barbara", :deadline => Date.new(2011, 11, 29))
