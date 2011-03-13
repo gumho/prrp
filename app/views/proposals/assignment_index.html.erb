@@ -3,11 +3,12 @@
 	<script src="/javascripts/json2.js"></script>
 <% end%>
 <h1>Proposal Assignments</h1>
-<a href="#"id="assignments-save">Save All</a>
+<input type="button" value="Save Changes" id="assignments-save" disabled="disabled">
+
 <img id="load-ball" src="/images/load_ball.gif">
 <div>
 	<h2>Available Reviewers</h2>
-	<p>Drag and drop a reviewer's name below to any proposal or back to the available reviewers' pool. Click 'Save all' when  finished.</p>
+	<p>Drag and drop a reviewer's name below to any proposal or back to the available reviewers' pool. Click 'Save Changes' when  finished.</p>
 	<ul class="available-reviewers">
 		<% @users.each do |user| %>
 			<li user_id="<%= user.id %>" class="draggable"><%= draggable_title(user)%></li>

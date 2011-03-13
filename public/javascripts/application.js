@@ -19,6 +19,9 @@ var droppableOptions = {
 		newDraggable.draggable(draggableOptions);
 		$(this).append(newDraggable);
 		ui.draggable.remove();
+		
+		//Enable'Save Changes' button
+		$('#assignments-save').attr('disabled', '');
 	}
 }
 
@@ -61,6 +64,7 @@ $(document).ready(function() {
 			},
 			complete: function() {
 				$('#load-ball').fadeOut();
+				$('#assignments-save').attr('disabled', 'disabled');
 			}
 		});
 		
