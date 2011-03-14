@@ -13,7 +13,7 @@ class TermWinnersController < ApplicationController
   def create
     @winner = TermWinner.find_or_create_by_term_id_and_proposal_id(:term_id => current_term.id, :proposal_id => params[:proposal_id])
     if @winner.save
-      redirect_to term_winners_path, :notice => 'Winner succesfully selected!'
+      redirect_to term_winners_path, :notice => 'Winner successfully selected!'
     end
   end
   
