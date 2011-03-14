@@ -111,12 +111,11 @@ class ProposalsController < ApplicationController
       :conditions => "roles.name = 'prrp reviewer' AND users.id not in (SELECT assignments.user_id FROM assignments WHERE term_id = 1)", 
       :joins => :role)
     
-    @proposals = Proposal.paginate(:page => params[:page],
-      :include => :assignments,
-      :joins => :term,
-      :per_page => 20,
-      :conditions => "terms.id = #{current_term.id}"
-    )
+    @proposals = Proposal.paginate(:page => 1, 
+      :include => :assignments, 
+      :joins => "JOIN campus_winners JOIN terms",
+      :per_page => 20, 
+      :conditions => "proposals.id = campus_winners.proposal_id AND terms.id = #{current_term.id}")
   end
   
   def elect
