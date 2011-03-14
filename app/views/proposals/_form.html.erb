@@ -19,9 +19,12 @@
 </div>
 
 <div class="field">
+	<%= f.label :award_category_id %><br>
     <%= f.select(:award_category_id, options_for_select(AwardCategory.all.collect {|p| [ p.name , p.id] })) %>
     
 </div>
+
+<h2>Attached Documents</h2>
 
 <ul id="document-list">
     <%= f.fields_for :documents do |builder| %>
@@ -29,7 +32,7 @@
     <% end %>
 </ul>
 
-<p><%= link_to_add_fields "Add Document", f, :documents %></p>
+<p><img src='/images/add.png' style='vertical-align:middle'><%= link_to_add_fields "Add Another Document", f, :documents %></p>
 
 
 <div class="actions">

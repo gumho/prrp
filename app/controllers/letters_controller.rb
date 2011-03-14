@@ -13,7 +13,7 @@ class LettersController < ApplicationController
   def index
     @letters = Letter.paginate :page => params[:page],
       :per_page => 20,
-      :order => 'applicant_organization ASC'
+      :order => 'applicant_last_name ASC'
   end
   
   def new
