@@ -2,10 +2,15 @@
 
 <h3>PRRP Applicants</h3>
 <p> 
-    Submit a proposal now!
+    <%= link_to 'Register', signup_path %> or <%= link_to 'login', login_path %> to create or manage your proposals now!
 </p>
 
 <h3>Campus and PRRP Committee Members</h3>
 <p> 
-    Go to committee pages
+	<%= link_to 'Login', login_path %> with your credentials
+</p>
+
+<h3>Recommending an Applicant?</h3>
+<p>
+	<%= link_to 'Submit', new_letter_path %> a Letter of Recommendation
 </p>
