@@ -39,7 +39,7 @@ Prrp::Application.routes.draw do
   match '/campus-control-panel/update' => 'campus_admin_controls#update', :via => [:put], :as => :update_campus_control_panel
   
   # Letters of rec
-  resources :letters
+  resources :letters, :only => [:new, :create]
   
   # Account stuff
   resources :password_resets, :only => [:new, :create, :edit, :update]
