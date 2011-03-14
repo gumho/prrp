@@ -6,7 +6,7 @@ module ApplicationHelper
     
     if current_user.role.name == 'admin'
       links = {
-        
+        'Users' => users_path
       }
     elsif current_user.role.name == 'campus admin'
       # Get number of current winners to display in side menu
