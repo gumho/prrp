@@ -29,6 +29,7 @@ class Ability
       elsif user.role.name == 'prrp admin'
         can :manage, :terms
         can :assign, :proposals
+        can :pick, :winners
       elsif user.role.name == 'prrp reviewer'
         can :review, :proposals
       else
