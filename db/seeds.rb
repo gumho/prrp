@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
-
 # Terms
 current_term = Term.create(:begin => Date.today - 75, :end => Date.today + 23, :active => true)
 
@@ -102,7 +94,7 @@ sa_b = User.create(:email => "sb@uci.edu",
   :role => applicant,
   :organization => ucd,
   :active => true)
-  
+
 # Award categories
 faculty_initiative = AwardCategory.create(:id => 1,
   :name => "Faculty Initiative Grant"

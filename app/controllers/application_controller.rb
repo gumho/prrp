@@ -56,7 +56,9 @@ class ApplicationController < ActionController::Base
       elsif cu.role.name == 'campus admin'
         review_proposals_path
       elsif cu.role.name == 'prrp admin'
-        terms_path
+        assignment_index_proposals_path
+      elsif cu.role.name == 'prrp reviewer'
+        review_proposals_path
       end
     end
 end

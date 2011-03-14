@@ -39,6 +39,12 @@ module ApplicationHelper
         'Terms' => terms_path,
         'Assign' => assignment_index_proposals_path
       }
+    elsif current_user.role.name == 'prrp reviewer'
+      links = {
+        'Review' => review_proposals_path
+      }
+    else
+      links = {'' => ''}
     end
     
     render :partial => "shared/side_menu", :locals => { :links => links}
