@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     
     if can? :manage, :users
+      @user.active = true
       if @user.save
         redirect_to(user_path(@user), :notice => 'User successfully created!')
       else
