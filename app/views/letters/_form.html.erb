@@ -1,0 +1,50 @@
+<%= form_for @letter do |f| %>
+	<% if @letter.errors.any? %>
+	<div id="error_explanation">
+	    <h2><%= pluralize(@letter.errors.count, "error") %> prohibited this proposal from being saved:</h2>
+
+	    <ul>
+	        <% @letter.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	        <% end %>
+	    </ul>
+	</div>
+	<% end %>
+	
+	<div class="field">
+		<%= f.label :recommender_name, 'Your Name' %><br>
+		<%= f.text_field :recommender_name %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :applicant_relation, 'Relation to Applicant' %><br>
+		<%= f.text_field :applicant_relation %>
+	</div>
+	
+	<h3>Applicant's...</h3>
+	
+	<div class="field">
+		<%= f.label :applicant_first_name, 'First Name' %><br>
+		<%= f.text_field :applicant_first_name %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :applicant_last_name, 'Last Name' %><br>
+		<%= f.text_field :applicant_last_name %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :applicant_organization, 'Affiliation' %><br>
+		<%= organization_combo_box(f) %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :content, 'Letter of Recommendation (Paste here)' %><br>
+		<%= f.text_area :content %>
+	</div>
+	
+	<div class="field">
+		<%= f.submit "Submit" %>
+	</div>
+	
+<% end %>

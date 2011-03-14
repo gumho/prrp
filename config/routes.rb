@@ -1,5 +1,6 @@
 Prrp::Application.routes.draw do
-
+  
+  # Shared routes
   root :to => 'home#index'
   match 'ad' => 'home#applicant_dashboard'
   
@@ -36,6 +37,9 @@ Prrp::Application.routes.draw do
   
   match '/campus-control-panel' => 'campus_admin_controls#edit', :as => :campus_control_panel
   match '/campus-control-panel/update' => 'campus_admin_controls#update', :via => [:put], :as => :update_campus_control_panel
+  
+  # Letters of rec
+  resources :letters
   
   # Account stuff
   resources :password_resets, :only => [:new, :create, :edit, :update]

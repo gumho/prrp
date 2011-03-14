@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110314031338) do
+ActiveRecord::Schema.define(:version => 20110314045712) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(:version => 20110314031338) do
     t.datetime "updated_at"
     t.string   "doc_file_name"
     t.integer  "proposal_id"
+  end
+
+  create_table "letters", :force => true do |t|
+    t.string   "applicant_organization"
+    t.string   "recommender_name"
+    t.string   "applicant_relation"
+    t.string   "applicant_first_name"
+    t.string   "applicant_last_name"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "organizations", :force => true do |t|
