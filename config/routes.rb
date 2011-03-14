@@ -23,9 +23,9 @@ Prrp::Application.routes.draw do
   end
   
   get 'proposals/assignment_index' => 'proposals#assignment_index', :as => :assignment_index_proposals
-  
   put 'assignments/multi_update' => 'assignments#multi_update', :as => :multi_update_assignments
   
+  resources :term_winners, :only => [:create, :destroy, :index]
   # Reviewer stuff
   resources :comments do
     get :create

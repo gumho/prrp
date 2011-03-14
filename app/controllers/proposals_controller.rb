@@ -80,9 +80,19 @@ class ProposalsController < ApplicationController
   def review
     authorize! :review, :proposals
     
+    # review current term
+    params[:term_id] = current_term.id
+    
     # campus level users cannot see other organizations' proposals
     if current_user.role.name == 'campus admin' || current_user.role.name == 'campus reviewer'
       params[:reviewer_organization] = current_user.organization.name
+    end
+    
+    # prrp reviewers can only see those assigned to them
+    if current_user.role.name == 'prrp reviewer'
+      logger.debug "iiiiii"
+      logger.debug current_user.id
+      params[:assigned_reviewer] = current_user.id
     end
     
     @proposals = Proposal.search(params)

@@ -27,10 +27,18 @@ class Proposal < ActiveRecord::Base
   
   def self.search(params)
     Proposal.paginate :page => params[:page], 
-      :joins => [:user => :organization],
+      :joins => joins(params[:assigned_reviewer]),
       :per_page => 20,
       :order => sort_conditions(params[:sort_by], params[:order]),
       :conditions => filter_conditions(params)
+  end
+  
+  def self.joins(assigned_reviewer)
+    if assigned_reviewer
+      [{:user => :organization}, :assignments]
+    else
+      {:user => :organization}
+    end
   end
   
   def self.sort_conditions(sort_by, order)
@@ -51,6 +59,8 @@ class Proposal < ActiveRecord::Base
     query = []
     query << reviewed_proposals_conditions(params) unless params[:only_unreviewed].blank?
     query << organization_conditions(params) unless params[:reviewer_organization].blank?
+    query << specific_term(params) unless params[:term_id].blank?
+    query << assigned_reviewer(params) unless params[:assigned_reviewer].blank?
     condition = [query.map{|c| c[0] }.join(" AND "), *query.map{|c| c[1..-1] }.flatten]
   end
   
@@ -60,6 +70,14 @@ class Proposal < ActiveRecord::Base
   
     def self.organization_conditions(params)
       ['organizations.name = ?', params[:reviewer_organization]]
+    end
+    
+    def self.specific_term(params)
+      ['proposals.term_id = ?', params[:term_id]]
+    end
+    
+    def self.assigned_reviewer(params)
+      ['assignments.user_id = ?', params[:assigned_reviewer]]
     end
   
 end

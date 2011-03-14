@@ -1,0 +1,48 @@
+<h1>Term Winners</h1>
+
+<h2>Currently Selected Winners</h2>
+<% if !@winners.empty? %>
+	<table>
+		<tr>
+			<th>Title</th>
+			<th></th>
+		</tr>
+		<% @winners.each do |winner| %>
+			<tr>
+				<td><%= winner.proposal.title %></td>
+				<td>
+					<% form_tag term_winner_path(winner), :method => 'delete' do %>
+						<%= hidden_field_tag :proposal_id, winner.proposal.id %>
+						<%= submit_tag 'Unpick Winner' %>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+<% else %>
+	<p>No winners have been selected yet</p>
+<% end %>
+
+<h2>Proposals</h2>
+<%= page_entries_info @proposals %>
+<%= will_paginate @proposals %>
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th>School</th>
+		<th></th>
+	</tr>
+	<% @proposals.each do |proposal| %>
+	<tr>
+		<td><%= proposal.title %></td>
+		<td><%= proposal.user.organization.name %></td>
+		<td>
+			<% form_tag term_winners_path, :method => 'post' do %>
+				<%= hidden_field_tag :proposal_id, proposal.id %>
+				<%= submit_tag 'Winner' %>
+			<% end %>
+		</td>
+		<tr>
+			<% end %>
+		</table>
