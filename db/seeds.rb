@@ -96,14 +96,15 @@ sa_b = User.create(:email => "sb@uci.edu",
   :active => true)
 
 # Award categories
-faculty_initiative = AwardCategory.create(:id => 1,
+advanced_graduate_research = AwardCategory.create(:id => 1,
+  :name => "Advanced Graduate Research"
+)
+
+faculty_initiative = AwardCategory.create(:id => 2,
   :name => "Faculty Initiative Grant"
 )
-faculty_research_planning = AwardCategory.create(:id => 2,
+faculty_research_planning = AwardCategory.create(:id => 3,
   :name => "Faculty Research/Planning Grant"
-)
-advanced_graduate_research = AwardCategory.create(:id => 3,
-  :name => "Advanced Graduate Research"
 )
   
 # Proposals
