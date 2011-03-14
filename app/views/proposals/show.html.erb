@@ -48,7 +48,7 @@
     <strong>Reviewer Comments (<%= @proposal.comments.length%>)</strong>
     <ul>
     <% @proposal.comments.each do |c| %>
-	<%= "#{c.user.first_name} wrote:" if !"#{c.user.first_name}".blank?%>
+	<strong><%= comment_author(c.user.first_name)%></strong>
         <li>
             <p><%= c.content%></p>
         </li>
