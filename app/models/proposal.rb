@@ -57,15 +57,15 @@ class Proposal < ActiveRecord::Base
   def self.filter_conditions(params)
     # add more conditions later
     query = []
-    query << reviewed_proposals_conditions(params) unless params[:only_unreviewed].blank?
+    query << unreviewed_proposals_conditions(params) unless params[:only_unreviewed].blank?
     query << organization_conditions(params) unless params[:reviewer_organization].blank?
     query << specific_term(params) unless params[:term_id].blank?
     query << assigned_reviewer(params) unless params[:assigned_reviewer].blank?
     condition = [query.map{|c| c[0] }.join(" AND "), *query.map{|c| c[1..-1] }.flatten]
   end
   
-    def self.reviewed_proposals_conditions(params)
-      ['proposals.reviewed = ?', true]
+    def self.unreviewed_proposals_conditions(params)
+      ['proposals.reviewed = ?', false]
     end
   
     def self.organization_conditions(params)
