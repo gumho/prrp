@@ -29,6 +29,13 @@ class ProposalsController < ApplicationController
       return
     end
     
+    # Don't show page if campus deadline has passed
+    if Date.today > current_user.organization.deadline
+      flash[:error] = "Sorry, the deadline for your campus was #{current_user.organization.deadline}"
+      redirect_to root_path
+      return
+    end
+    
     @user = User.find(params[:user_id])
     
     @proposal = Proposal.new
