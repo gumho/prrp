@@ -1,0 +1,25 @@
+<p>
+	<strong>Recommender:</strong><br>
+	<%= @letter.recommender_name%>
+</p>
+<p>
+	<strong>Relation to Applicant:</strong><br>
+	<%= @letter.applicant_relation %>
+</p>
+<p>
+	<strong>Email:</strong><br>
+	<%= @letter.recommender_email %>
+</p>
+<h2>Applicant</h2>
+<p>
+	<strong>Name:</strong><br>
+	<%= "#{@letter.applicant_first_name} #{@letter.applicant_last_name}" %>
+</p>
+<p>
+	<strong>Affiliation:</strong><br>
+	<%= @letter.applicant_organization %>
+</p>
+<p>
+	<strong>Letter:</strong><br>
+	<%= @letter.content %>
+</p>

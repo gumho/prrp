@@ -1,0 +1,17 @@
+<h1>Letters of Recommendation</h1>
+
+<%= page_entries_info @letters %>
+<%= will_paginate @letters %>
+
+<table>
+	<tr>
+		<th>Applicant</th>
+		<th>Campus</th>
+	</tr>
+	<% @letters.each do |letter| %>
+	<tr>
+		<td><%= link_to "#{letter.applicant_first_name} #{letter.applicant_last_name}", letter_path(letter) %></td>
+		<td><%= letter.applicant_organization %></td>
+	</tr>
+	<% end %>
+</table>

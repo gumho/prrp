@@ -27,6 +27,7 @@ class Ability
       elsif user.role.name == 'campus reviewer'
         can :review, :proposals
       elsif user.role.name == 'prrp admin'
+        can :manage, :letters
         can :manage, :terms
         can :assign, :proposals
         can :pick, :winners

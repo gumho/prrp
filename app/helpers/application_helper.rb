@@ -38,7 +38,8 @@ module ApplicationHelper
       links = {
         'Terms' => terms_path,
         'Assign' => assignment_index_proposals_path,
-        'Winners' => term_winners_path
+        'Winners' => term_winners_path,
+        'Letters of Rec.' => letters_path
       }
     elsif current_user.role.name == 'prrp reviewer'
       links = {

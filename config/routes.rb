@@ -27,6 +27,7 @@ Prrp::Application.routes.draw do
   put 'assignments/multi_update' => 'assignments#multi_update', :as => :multi_update_assignments
   
   resources :term_winners, :only => [:create, :destroy, :index]
+  
   # Reviewer stuff
   resources :comments do
     get :create
@@ -39,7 +40,7 @@ Prrp::Application.routes.draw do
   match '/campus-control-panel/update' => 'campus_admin_controls#update', :via => [:put], :as => :update_campus_control_panel
   
   # Letters of rec
-  resources :letters, :only => [:new, :create]
+  resources :letters, :only => [:new, :create, :index, :show, :destroy]
   
   # Account stuff
   resources :password_resets, :only => [:new, :create, :edit, :update]
